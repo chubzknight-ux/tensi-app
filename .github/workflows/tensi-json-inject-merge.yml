@@ -1,0 +1,109 @@
+name: TENSI JSON Code Inject & Auto-Merge
+
+on:
+  workflow_dispatch:
+    inputs:
+      patch_file:
+        description: "Path file JSON patch di repo"
+        required: true
+        default: "tensi-patch.json"
+      auto_merge:
+        description: "Auto merge PR ke main? (true/false)"
+        required: true
+        default: "true"
+  repository_dispatch:
+    types: [tensi_inject_code]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  inject-and-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git identity
+        run: |
+          git config user.name "tensi-bot[bot]"
+          git config user.email "tensi-bot[bot]@users.noreply.github.com"
+
+      - name: Apply JSON patch & create branch
+        id: patch_step
+        env:
+          PATCH_FILE_INPUT: ${{ github.event.inputs.patch_file || 'tensi-patch.json' }}
+          DISPATCH_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            const { execSync } = require("child_process");
+
+            let patchData;
+            if (process.env.DISPATCH_PAYLOAD && process.env.DISPATCH_PAYLOAD !== "null" && process.env.DISPATCH_PAYLOAD.trim() !== "") {
+              const parsed = JSON.parse(process.env.DISPATCH_PAYLOAD);
+              patchData = parsed.patch ? parsed.patch : parsed;
+            } else {
+              patchData = JSON.parse(fs.readFileSync(process.env.PATCH_FILE_INPUT, "utf8"));
+            }
+
+            const targetBranch = patchData.target_branch || "main";
+            const prefix = patchData.feature_branch_prefix || "tensi-patch";
+            const branchName = `${prefix}-${Date.now()}`;
+            const commitMsg = patchData.commit_message || "chore: inject code via JSON";
+            const prTitle = patchData.pr_title || commitMsg;
+            const prBody = patchData.pr_body || "Automated PR created from JSON payload.";
+
+            execSync(`git checkout ${targetBranch}`, { stdio: "inherit" });
+            execSync(`git checkout -b ${branchName}`, { stdio: "inherit" });
+
+            if (!Array.isArray(patchData.files) || patchData.files.length === 0) {
+              throw new Error("JSON patch must contain a non-empty files array.");
+            }
+
+            for (const file of patchData.files) {
+              const fullPath = path.resolve(process.cwd(), file.path);
+              fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+              if (file.mode === "append" && fs.existsSync(fullPath)) {
+                const existing = fs.readFileSync(fullPath, "utf8");
+                fs.writeFileSync(fullPath, existing + file.content, "utf8");
+              } else {
+                fs.writeFileSync(fullPath, file.content, "utf8");
+              }
+            }
+
+            execSync("git add .", { stdio: "inherit" });
+            execSync(`git commit -m "${commitMsg.replace(/"/g, "\\\"")}"`, { stdio: "inherit" });
+            execSync(`git push -u origin ${branchName}`, { stdio: "inherit" });
+
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `branch_name=${branchName}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `target_branch=${targetBranch}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `pr_title=${prTitle}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `pr_body=${prBody}\n`);
+          '
+
+      - name: Create PR & Merge to main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ steps.patch_step.outputs.branch_name }}
+          TARGET_BRANCH: ${{ steps.patch_step.outputs.target_branch }}
+          PR_TITLE: ${{ steps.patch_step.outputs.pr_title }}
+          PR_BODY: ${{ steps.patch_step.outputs.pr_body }}
+          AUTO_MERGE: ${{ github.event.inputs.auto_merge || 'true' }}
+        run: |
+          PR_URL=$(gh pr create \
+            --base "$TARGET_BRANCH" \
+            --head "$BRANCH_NAME" \
+            --title "$PR_TITLE" \
+            --body "$PR_BODY")
+          echo "Created PR: $PR_URL"
+
+          if [ "$AUTO_MERGE" = "true" ]; then
+            gh pr merge "$PR_URL" --squash --delete-branch
+            echo "Merged $BRANCH_NAME into $TARGET_BRANCH"
+          fi
