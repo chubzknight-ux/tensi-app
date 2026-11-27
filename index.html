@@ -14,7 +14,6 @@
       --bg: #0b0f17;
       --surface: #131a26;
       --surface-2: #1b2436;
-      --surface-3: #232f45;
       --border: rgba(255, 255, 255, 0.08);
       --border-strong: rgba(255, 255, 255, 0.16);
       --text: #f3f6fc;
@@ -25,10 +24,8 @@
       --emerald-bg: rgba(52, 211, 153, 0.14);
       --amber: #fbbf24;
       --amber-bg: rgba(251, 191, 36, 0.14);
-      --rose: #fb7185;
-      --rose-bg: rgba(251, 113, 133, 0.14);
       --violet: #a78bfa;
-      --violet-bg: rgba(167, 139, 250, 0.16);
+      --violet-bg: rgba(167, 139, 250, 0.18);
       --radius: 16px;
       --safe-top: env(safe-area-inset-top, 12px);
       --safe-bottom: env(safe-area-inset-bottom, 16px);
@@ -111,11 +108,6 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      transition: all 0.15s ease;
-    }
-
-    .chip-btn:active {
-      transform: scale(0.96);
     }
 
     .chip-btn.accent {
@@ -157,7 +149,6 @@
       border-radius: 999px;
       white-space: nowrap;
       cursor: pointer;
-      transition: all 0.15s ease;
     }
 
     .pill.active {
@@ -207,7 +198,7 @@
     /* Primary Action Bar */
     .action-bar {
       display: grid;
-      grid-template-columns: 1.25fr 1fr 0.85fr;
+      grid-template-columns: 1.35fr 0.95fr 0.85fr;
       gap: 8px;
       margin-bottom: 14px;
     }
@@ -217,15 +208,15 @@
       color: #04111f;
       border: none;
       border-radius: 14px;
-      padding: 12px 14px;
-      font-size: 0.86rem;
+      padding: 12px 12px;
+      font-size: 0.84rem;
       font-weight: 800;
       cursor: pointer;
       box-shadow: 0 6px 20px var(--accent-glow);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     .btn-secondary {
@@ -234,7 +225,7 @@
       border: 1px solid var(--border-strong);
       border-radius: 14px;
       padding: 12px 10px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -249,19 +240,13 @@
       border: 1px solid rgba(52, 211, 153, 0.35);
       border-radius: 14px;
       padding: 12px 10px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 4px;
-    }
-
-    .btn-primary:active,
-    .btn-secondary:active,
-    .btn-emerald:active {
-      transform: scale(0.97);
     }
 
     /* Exercise Cards */
@@ -279,7 +264,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      transition: border-color 0.2s ease;
     }
 
     .exercise-card.pinned {
@@ -293,8 +277,8 @@
     }
 
     .svg-box {
-      width: 62px;
-      height: 62px;
+      width: 60px;
+      height: 60px;
       border-radius: 14px;
       background: var(--surface-2);
       border: 1px solid var(--border);
@@ -320,7 +304,7 @@
     }
 
     .ex-title {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 4px;
@@ -393,6 +377,12 @@
       color: var(--amber);
     }
 
+    .mini-btn.cam-active {
+      background: var(--emerald-bg);
+      border-color: rgba(52, 211, 153, 0.45);
+      color: var(--emerald);
+    }
+
     .guide-drawer {
       background: var(--surface-2);
       border-radius: 12px;
@@ -418,78 +408,6 @@
       display: block;
     }
 
-    /* Camera Mirror View */
-    .mirror-box {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      max-height: 440px;
-      background: #060911;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border-strong);
-      margin-bottom: 12px;
-    }
-
-    #mirrorVideo,
-    #mirrorCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scaleX(-1);
-    }
-
-    .hud-top {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-      z-index: 5;
-    }
-
-    .privacy-pill {
-      background: rgba(11, 15, 23, 0.82);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(52, 211, 153, 0.4);
-      color: var(--emerald);
-      font-size: 0.67rem;
-      font-weight: 700;
-      padding: 5px 9px;
-      border-radius: 999px;
-    }
-
-    .score-pill {
-      background: rgba(11, 15, 23, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-strong);
-      color: var(--text);
-      font-size: 0.76rem;
-      font-weight: 800;
-      padding: 5px 10px;
-      border-radius: 999px;
-    }
-
-    .hud-bottom {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
-      background: rgba(11, 15, 23, 0.84);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 9px 12px;
-      z-index: 5;
-      font-size: 0.76rem;
-    }
-
-    /* Progress & Vault View */
     .panel {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -513,7 +431,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(11, 15, 23, 0.92);
+      background: rgba(11, 15, 23, 0.94);
       backdrop-filter: blur(14px);
       border-top: 1px solid var(--border);
       padding: 8px 16px calc(var(--safe-bottom) + 4px);
@@ -526,14 +444,14 @@
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 700;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 3px;
       cursor: pointer;
-      padding: 4px 14px;
+      padding: 4px 18px;
     }
 
     .nav-item.active {
@@ -544,13 +462,13 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(5, 8, 15, 0.88);
+      background: rgba(5, 8, 15, 0.92);
       backdrop-filter: blur(10px);
       z-index: 80;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 12px;
       overflow-y: auto;
     }
 
@@ -563,43 +481,128 @@
       border: 1px solid var(--border-strong);
       border-radius: 22px;
       width: 100%;
-      max-width: 500px;
-      max-height: 90dvh;
+      max-width: 520px;
+      max-height: 94dvh;
       overflow-y: auto;
-      padding: 18px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      padding: 14px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
     }
 
-    .player-timer {
-      font-size: 3.4rem;
+    /* LIVE WORKOUT CAMERA STAGE */
+    .live-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      max-height: 52dvh;
+      background: #060911;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-strong);
+      margin: 10px 0;
+    }
+
+    #workoutVideo,
+    #workoutCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+    }
+
+    .stage-hud-top {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      z-index: 6;
+    }
+
+    .hud-chip {
+      background: rgba(11, 15, 23, 0.82);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    .hud-chip.privacy {
+      border-color: rgba(52, 211, 153, 0.45);
+      color: var(--emerald);
+    }
+
+    .stage-timer-pill {
+      position: absolute;
+      top: 46px;
+      right: 10px;
+      background: rgba(11, 15, 23, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #f8fafc;
+      font-size: 1.55rem;
       font-weight: 900;
-      text-align: center;
       font-variant-numeric: tabular-nums;
-      margin: 8px 0;
-      letter-spacing: -0.02em;
+      padding: 4px 12px;
+      border-radius: 12px;
+      z-index: 6;
+    }
+
+    .stage-svg-pip {
+      position: absolute;
+      top: 46px;
+      left: 10px;
+      width: 56px;
+      height: 56px;
+      background: rgba(19, 26, 38, 0.88);
+      border: 1px solid var(--border-strong);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 6;
+    }
+
+    .stage-hud-bottom {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(11, 15, 23, 0.86);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 9px 12px;
+      z-index: 6;
     }
 
     .recoil-banner {
       background: var(--violet-bg);
-      border: 1px solid rgba(167, 139, 250, 0.45);
-      color: #ddd6fe;
-      border-radius: 12px;
-      padding: 10px 12px;
+      border: 1px solid rgba(167, 139, 250, 0.55);
+      color: #ede9fe;
+      border-radius: 10px;
+      padding: 7px 10px;
       text-align: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 10px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      margin-bottom: 8px;
       display: none;
     }
 
     .recoil-banner.active {
       display: block;
-      animation: pulseGlow 1s infinite alternate;
+      animation: pulseGlow 0.9s infinite alternate;
     }
 
     @keyframes pulseGlow {
-      from { box-shadow: 0 0 6px rgba(167, 139, 250, 0.2); }
-      to { box-shadow: 0 0 18px rgba(167, 139, 250, 0.55); }
+      from { box-shadow: 0 0 6px rgba(167, 139, 250, 0.25); }
+      to { box-shadow: 0 0 18px rgba(167, 139, 250, 0.65); }
     }
 
     /* Inputs */
@@ -657,7 +660,6 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* SVG Motion */
     @keyframes svgBob {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-4px); }
@@ -680,7 +682,7 @@
         <div class="brand-tagline">Lift Your Structure. Spring Your Fascia.</div>
       </div>
       <div class="header-actions">
-        <button class="chip-btn accent" id="openPatchStudioBtn" title="JSON Patch &amp; GitHub Auto-Merge">⚡ JSON Patch</button>
+        <button class="chip-btn accent" id="openPatchStudioBtn">⚡ JSON Patch</button>
         <button class="chip-btn" id="openOnboardingBtn">Setup</button>
       </div>
     </header>
@@ -716,7 +718,7 @@
       </div>
       <div class="stat-card">
         <div class="stat-val" id="postureScoreVal">--</div>
-        <div class="stat-lbl">Posture Score</div>
+        <div class="stat-lbl">Live Alignment</div>
       </div>
       <div class="stat-card">
         <div class="stat-val" id="hydrationVal">0ml</div>
@@ -727,7 +729,7 @@
     <!-- VIEW 1: TODAY'S ROLL -->
     <main id="view-roll" class="view active">
       <div class="action-bar">
-        <button class="btn-primary" id="startWorkoutBtn">▶ Start Session</button>
+        <button class="btn-primary" id="startWorkoutBtn">📷 Start Live Session</button>
         <button class="btn-secondary" id="rerollBtn">🎲 Re-Roll</button>
         <button class="btn-emerald" id="deskResetBtn">⚡ 5m Reset</button>
       </div>
@@ -735,46 +737,7 @@
       <div id="slotList" class="slot-list"></div>
     </main>
 
-    <!-- VIEW 2: ZERO-RECORDING AI POSTURE MIRROR -->
-    <section id="view-mirror" class="view">
-      <div class="mirror-box">
-        <video id="mirrorVideo" autoplay playsinline muted></video>
-        <canvas id="mirrorCanvas"></canvas>
-
-        <div class="hud-top">
-          <span class="privacy-pill">🔒 Live Only • Zero Video Saved</span>
-          <span class="score-pill" id="liveScoreHud">Alignment: --</span>
-        </div>
-
-        <div class="hud-bottom">
-          <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:3px;">
-            <span id="framingHint">Ideal Distance: ~1.5m (Head &amp; Shoulders in Frame)</span>
-            <span id="liveRepHud" style="color:var(--emerald);">Reps/Hold: 0</span>
-          </div>
-          <div id="postureFeedbackText" style="color:var(--text-muted);font-size:0.73rem;">
-            Tap Start Live Camera or Demo Pose to measure forward-head &amp; shoulder balance locally.
-          </div>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
-        <button class="btn-primary" id="startCamBtn" style="font-size:0.76rem;">📷 Live Camera</button>
-        <button class="btn-secondary" id="demoPoseBtn" style="font-size:0.76rem;">🤖 Demo Pose</button>
-        <button class="btn-emerald" id="saveScanBtn" style="font-size:0.76rem;">✓ Log Score</button>
-      </div>
-
-      <div class="panel">
-        <div class="panel-title">
-          <span>Active Camera Target</span>
-          <select id="mirrorExerciseSelect" class="input-box" style="width:auto;padding:4px 8px;font-size:0.74rem;"></select>
-        </div>
-        <p style="font-size:0.76rem;color:var(--text-muted);">
-          Processed 100% in browser memory. No video stream or snapshot is ever recorded, stored, or uploaded.
-        </p>
-      </div>
-    </section>
-
-    <!-- VIEW 3: PROGRESS & 24-MOVE MYOFASCIAL VAULT -->
+    <!-- VIEW 2: PROGRESS & 24-MOVE MYOFASCIAL VAULT -->
     <section id="view-progress" class="view">
       <div class="panel">
         <div class="panel-title">
@@ -798,7 +761,7 @@
       <div class="panel">
         <div class="panel-title">
           <span>24-Move Myofascial Vault</span>
-          <span style="font-size:0.72rem;color:var(--text-muted);" id="vaultCountBadge">24 Moves</span>
+          <span style="font-size:0.72rem;color:var(--text-muted);">24 Moves</span>
         </div>
         <div id="vaultList" style="display:flex;flex-direction:column;gap:8px;"></div>
       </div>
@@ -811,9 +774,9 @@
       <span>🎲</span>
       <span>Today's Roll</span>
     </button>
-    <button class="nav-item" data-tab="mirror">
-      <span>🪞</span>
-      <span>AI Mirror</span>
+    <button class="nav-item" id="navLiveCamBtn">
+      <span>📷</span>
+      <span>Live Workout</span>
     </button>
     <button class="nav-item" data-tab="progress">
       <span>📈</span>
@@ -825,7 +788,7 @@
   <div id="onboardingModal" class="modal-backdrop">
     <div class="modal-card">
       <div style="font-size:0.72rem;font-weight:800;color:var(--accent);letter-spacing:0.08em;">WELCOME TO TENSI</div>
-      <h2 style="font-size:1.25rem;font-weight:800;margin-top:2px;">Training Elastic Networks, Structure &amp; Integrity</h2>
+      <h2 style="font-size:1.22rem;font-weight:800;margin-top:2px;">Training Elastic Networks, Structure &amp; Integrity</h2>
       <p style="font-size:0.8rem;color:var(--emerald);font-weight:600;margin-bottom:12px;">Lift Your Structure. Spring Your Fascia.</p>
 
       <label class="field-label">1. Primary Structure Focus</label>
@@ -852,28 +815,47 @@
     </div>
   </div>
 
-  <!-- MODAL 2: GUIDED ELASTIC RECOIL WORKOUT PLAYER -->
+  <!-- MODAL 2: LIVE CAMERA GUIDED WORKOUT PLAYER -->
   <div id="playerModal" class="modal-backdrop">
     <div class="modal-card">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span id="playerStepLabel" style="font-size:0.74rem;font-weight:800;color:var(--accent);">MOVE 1 OF 5</span>
-        <div style="display:flex;gap:6px;">
-          <button class="mini-btn" id="voiceToggleBtn">🔊 Voice: ON</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;">
+        <span id="playerStepLabel" style="font-size:0.72rem;font-weight:800;color:var(--accent);">MOVE 1 OF 5</span>
+        <div style="display:flex;gap:5px;">
+          <button class="mini-btn cam-active" id="toggleWorkoutCamBtn">📷 Cam: ON</button>
+          <button class="mini-btn" id="voiceToggleBtn">🔊 Voice</button>
           <button class="mini-btn" id="closePlayerBtn">✕ Exit</button>
         </div>
       </div>
 
-      <div id="playerSvgWrap" class="svg-box" style="width:92px;height:92px;margin:12px auto;"></div>
-      <h3 id="playerTitle" style="text-align:center;font-size:1.15rem;font-weight:800;">Exercise Name</h3>
-      <div id="playerFasciaTag" style="text-align:center;font-size:0.74rem;color:#c4b5fd;font-weight:700;margin-top:3px;">Fascia Line</div>
-
-      <div id="playerTimer" class="player-timer">00:40</div>
-
-      <div id="recoilBanner" class="recoil-banner">
-        ⚡ ELASTIC RECOIL PHASE — Light rhythmic spring &amp; 3D spiral breath!
+      <div style="margin-top:6px;">
+        <h3 id="playerTitle" style="font-size:1.05rem;font-weight:800;">Exercise Name</h3>
+        <div id="playerFasciaTag" style="font-size:0.72rem;color:#c4b5fd;font-weight:700;">🧬 Fascia Line</div>
       </div>
 
-      <p id="playerCueText" style="text-align:center;font-size:0.8rem;color:#cbd5e1;margin-bottom:14px;"></p>
+      <!-- INTEGRATED LIVE CAMERA + AI POSE OVERLAY STAGE -->
+      <div class="live-stage">
+        <video id="workoutVideo" autoplay playsinline muted></video>
+        <canvas id="workoutCanvas"></canvas>
+
+        <div class="stage-hud-top">
+          <span class="hud-chip privacy" id="camPrivacyChip">🔒 Live Only • Zero Video Saved</span>
+          <span class="hud-chip" id="liveAlignChip">Align: 88/100</span>
+        </div>
+
+        <div class="stage-svg-pip" id="playerSvgWrap"></div>
+        <div class="stage-timer-pill" id="playerTimer">00:40</div>
+
+        <div class="stage-hud-bottom">
+          <div id="recoilBanner" class="recoil-banner">
+            ⚡ ELASTIC RECOIL PHASE — Light rhythmic spring &amp; 3D spiral breath!
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.74rem;font-weight:800;margin-bottom:2px;">
+            <span id="liveTrackStatus" style="color:var(--emerald);">Live Mirror Active (~1.5m frame)</span>
+            <span id="liveRepCounter" style="color:var(--amber);">Reps: 0</span>
+          </div>
+          <div id="playerCueText" style="font-size:0.74rem;color:#cbd5e1;"></div>
+        </div>
+      </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
         <button class="btn-secondary" id="pausePlayerBtn">⏸ Pause</button>
@@ -887,7 +869,8 @@
     <div class="modal-card" style="text-align:center;">
       <div style="font-size:2rem;margin-bottom:4px;">✨</div>
       <h2 style="font-size:1.2rem;font-weight:800;">TENSI Session Complete</h2>
-      <p style="font-size:0.78rem;color:var(--text-muted);margin:4px 0 12px;">
+      <p id="summaryScoreText" style="font-size:0.82rem;color:var(--emerald);font-weight:700;margin-top:4px;"></p>
+      <p style="font-size:0.78rem;color:var(--text-muted);margin:6px 0 12px;">
         Your myofascial lines are hydrated and elastically loaded. Drink water within 15 minutes to maintain collagen glide.
       </p>
 
@@ -912,7 +895,7 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
         <div>
           <label class="field-label">GitHub Owner</label>
-          <input id="ghOwnerInput" class="input-box" placeholder="e.g. username" />
+          <input id="ghOwnerInput" class="input-box" placeholder="e.g. chubzknight-ux" />
         </div>
         <div>
           <label class="field-label">Repository Name</label>
@@ -954,1063 +937,1114 @@
     </div>
   </div>
 
-  <script>
-    (function () {
-      "use strict";
+  <script type="module">
+    const STORAGE_KEY = "tensi_pwa_v1";
+    const GH_CONFIG_KEY = "tensi_gh_dispatch_v1";
 
-      const STORAGE_KEY = "tensi_pwa_v1";
-      const GH_CONFIG_KEY = "tensi_gh_dispatch_v1";
+    const $ = (id) => document.getElementById(id);
 
-      const $ = (id) => document.getElementById(id);
+    function showToast(msg) {
+      const el = $("toast");
+      if (!el) return;
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => el.classList.remove("show"), 2600);
+    }
 
-      function showToast(msg) {
-        const el = $("toast");
-        if (!el) return;
-        el.textContent = msg;
-        el.classList.add("show");
-        clearTimeout(showToast._t);
-        showToast._t = setTimeout(() => el.classList.remove("show"), 2600);
+    /* 24-MOVE MYOFASCIAL & STRUCTURE EXERCISE VAULT */
+    const EXERCISES = [
+      { id: "m1", slot: 0, name: "Doorway Pectoral Spiral Opener", equip: "bodyweight", safe: true, mode: "hold", anim: "stretch", fascia: "Superficial Front & Spiral Line", reps: "40s Hold + 10s Pulse", cue: "Forearm at 90°, rotate ribs gently away while breathing into upper sternum.", steps: ["Place forearm on doorframe at shoulder height.", "Step forward and rotate torso 15° away for spiral tension.", "Inhale 360° into upper ribs; finish with gentle micro-pulses."] },
+      { id: "m2", slot: 0, name: "Thoracic Open-Book 3D Twist", equip: "bodyweight", safe: true, mode: "rep", anim: "stretch", fascia: "Spiral & Lateral Line", reps: "8 / side", cue: "Keep knees stacked; sweep top arm wide across chest with full rib expansion.", steps: ["Lie on side with knees bent at 90°.", "Sweep top arm open toward opposite floor.", "Exhale to soften sternum; pulse gently at end range."] },
+      { id: "m3", slot: 0, name: "Cervical Chin-Glide & Sternum Lift", equip: "bodyweight", safe: true, mode: "rep", anim: "stretch", fascia: "Deep Front Line", reps: "12 slow glides", cue: "Glide head straight back while lifting collarbone upward without shrugging.", steps: ["Sit or stand tall with soft knees.", "Draw chin horizontally back to lengthen neck fascia.", "Lift sternum 1 cm on inhale; relax shoulders down."] },
+      { id: "m4", slot: 0, name: "Cat-Cow Scapular Fascia Glide", equip: "bodyweight", safe: true, mode: "rep", anim: "stretch", fascia: "Superficial Back & Front Line", reps: "10 cycles", cue: "Push floor away to spread shoulder blades, then glide chest forward.", steps: ["Start on hands and knees with wrists under shoulders.", "Press palms down to dome upper back fascia.", "Drop ribs and glide sternum forward on inhale."] },
+      { id: "m5", slot: 0, name: "Child's Pose Lateral Lat Reach", equip: "bodyweight", safe: true, mode: "hold", anim: "stretch", fascia: "Lateral & Functional Back Line", reps: "35s / side", cue: "Walk hands diagonally to open underarm and lateral ribcage fascia.", steps: ["Sink hips back toward heels.", "Walk both hands 30° to the right.", "Breathe into left side ribs to lengthen fascial sheath."] },
+      { id: "m6", slot: 0, name: "Kettlebell Bent-Knee Rib Pullover", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Superficial Front & Arm Line", reps: "10 reps", cue: "Keep lower ribs knitted down as kettlebell arcs overhead.", steps: ["Lie on back holding kettlebell horns above chest.", "Lower bell slowly behind head with soft elbows.", "Spring back smoothly using lats and upper chest."] },
+
+      { id: "c1", slot: 1, name: "Incline Wall/Bench Elastic Push-Up", equip: "bodyweight", safe: true, mode: "rep", anim: "press", fascia: "Superficial Front & Deep Front Arm Line", reps: "12 reps + Recoil", cue: "Elbows at 45°; finish final seconds with small elastic bounce at bottom.", steps: ["Place hands slightly wider than shoulders on sturdy bench/wall.", "Lower chest with straight spine and tucked ribs.", "Drive up smoothly; finish set with light elastic pulses."] },
+      { id: "c2", slot: 1, name: "Isometric Prayer Sternum Squeeze", equip: "bodyweight", safe: true, mode: "hold", anim: "press", fascia: "Superficial Front Line", reps: "35s Squeeze + Pulse", cue: "Press palms together at chest height while lifting breastbone.", steps: ["Bring palms together in front of sternum.", "Press hands inward at 70% effort without rounding shoulders.", "Pulse hands forward 2 inches during recoil phase."] },
+      { id: "c3", slot: 1, name: "Single-Arm Kettlebell Floor Press", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Spiral & Front Arm Line", reps: "10 / arm", cue: "Keep wrist neutral; tap triceps softly on floor and press vertically.", steps: ["Lie with knees bent and kettlebell racked safely.", "Lower elbow at 45° until back of arm touches floor.", "Press up while keeping opposite shoulder grounded."] },
+      { id: "c4", slot: 1, name: "Kettlebell Svend Crush Press", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Superficial Front & Deep Arm Line", reps: "12 reps", cue: "Crush bell between palms at chest level and press straight forward.", steps: ["Hold kettlebell body between both palms at sternum.", "Squeeze inward to ignite inner pectoral fascia.", "Extend arms forward without shrugging traps."] },
+      { id: "c5", slot: 1, name: "Wide-to-Narrow Floor Chest Press", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Anterior Functional Line", reps: "10 reps", cue: "Hold kettlebell by horns; lower to lower-chest and press cleanly.", steps: ["Grip kettlebell horns firmly over chest.", "Lower with controlled 2-second tempo.", "Press up and finish with rhythmic mini-pulses."] },
+      { id: "c6", slot: 1, name: "Tempo Floor Push-Up", equip: "bodyweight", safe: false, mode: "rep", anim: "press", fascia: "Superficial Front Line", reps: "10 reps", cue: "Keep ear, shoulder, and hip aligned in one straight tensegrity line.", steps: ["Set hands under shoulders with fingers spread.", "Lower chest toward floor in 3 seconds.", "Press floor away without sagging hips."] },
+
+      { id: "b1", slot: 2, name: "Wall Angels Scapular Glide", equip: "bodyweight", safe: true, mode: "rep", anim: "pull", fascia: "Superficial Back & Posterior Arm Line", reps: "12 slow glides", cue: "Keep ribs down and slide wrists upward along wall like wings.", steps: ["Stand with back and head resting lightly against wall.", "Raise arms into W-shape with elbows near wall.", "Glide arms overhead into Y without arching lower back."] },
+      { id: "b2", slot: 2, name: "Prone Y-T-W Suspension Raises", equip: "bodyweight", safe: false, mode: "rep", anim: "pull", fascia: "Superficial Back Line", reps: "8 cycles", cue: "Thumbs point up; lift arms using mid-back rather than neck.", steps: ["Lie face down with forehead resting on folded towel.", "Lift arms in Y, T, and W positions with thumbs up.", "Hold top briefly to suspend upper chest posture."] },
+      { id: "b3", slot: 2, name: "Standing Bent-Over Scapular Squeeze", equip: "bodyweight", safe: true, mode: "rep", anim: "pull", fascia: "Superficial Back & Spiral Line", reps: "15 reps", cue: "Hinge hips back 30°; draw shoulder blades together and downward.", steps: ["Hinge hips back with long flat spine.", "Pull elbows wide and squeeze shoulder blades.", "Add rapid rhythmic pulses in the final recoil phase."] },
+      { id: "b4", slot: 2, name: "Single-Arm Kettlebell Row", equip: "kettlebell", safe: true, mode: "rep", anim: "pull", fascia: "Posterior Functional & Back Line", reps: "12 / arm", cue: "Pull kettlebell handle toward hip pocket; keep collarbone open.", steps: ["Support one hand on bench or front thigh.", "Row kettlebell smoothly toward hip.", "Lower with control to stretch lat fascia."] },
+      { id: "b5", slot: 2, name: "Kettlebell 360° Ribcage Halo", equip: "kettlebell", safe: true, mode: "rep", anim: "pull", fascia: "Spiral & Arm Fascial Lines", reps: "6 / direction", cue: "Orbit kettlebell close around head while keeping ribs stacked.", steps: ["Hold kettlebell upside down by horns at chest.", "Circle bell smoothly around ear and back of head.", "Keep pelvis and ribcage completely still."] },
+      { id: "b6", slot: 2, name: "Staggered Gorilla Kettlebell Row", equip: "kettlebell", safe: true, mode: "rep", anim: "pull", fascia: "Spiral & Superficial Back Line", reps: "10 / side", cue: "Square shoulders to floor; pull bell cleanly without torso twist.", steps: ["Take split stance with flat back.", "Row kettlebell while anchoring opposite shoulder.", "Breathe steadily through lower ribs."] },
+
+      { id: "k1", slot: 3, name: "Slow Tempo Dead Bug", equip: "bodyweight", safe: true, mode: "rep", anim: "core", fascia: "Deep Front Line", reps: "10 alternating", cue: "Exhale fully to knit lower ribs down as opposite arm and leg reach.", steps: ["Lie on back with knees over hips and arms vertical.", "Exhale and extend opposite arm and leg slowly.", "Keep lower back gently connected to mat."] },
+      { id: "k2", slot: 3, name: "Glute Bridge with Sternum Lift", equip: "bodyweight", safe: true, mode: "rep", anim: "core", fascia: "Deep Front & Superficial Back Line", reps: "12 reps", cue: "Press arms into floor to open chest while lifting hips smoothly.", steps: ["Lie on back with heels hip-width apart.", "Press back of arms into floor as hips rise.", "Avoid flaring ribs at the top."] },
+      { id: "k3", slot: 3, name: "Bird-Dog Fascial Cross-Reach", equip: "bodyweight", safe: true, mode: "rep", anim: "core", fascia: "Spiral & Posterior Functional Line", reps: "8 / side", cue: "Reach long through heel and fingertips rather than lifting high.", steps: ["Start in tabletop with neutral spine.", "Extend right arm and left leg horizontally.", "Pause 2 seconds to feel diagonal fascial tension."] },
+      { id: "k4", slot: 3, name: "Kettlebell Suitcase Posture March", equip: "kettlebell", safe: true, mode: "rep", anim: "core", fascia: "Lateral & Deep Front Line", reps: "20 marches", cue: "Hold kettlebell at one side; march slowly without leaning.", steps: ["Hold kettlebell in one hand at side.", "Stand tall with crown of head lifted.", "March knees slowly while keeping shoulders level."] },
+      { id: "k5", slot: 3, name: "Kettlebell Around-the-World Orbit", equip: "kettlebell", safe: true, mode: "rep", anim: "core", fascia: "Spiral & Deep Front Line", reps: "10 / direction", cue: "Pass bell smoothly around hips while keeping sternum upright.", steps: ["Stand feet hip-width apart with soft knees.", "Pass kettlebell from hand to hand around waist.", "Resist hip sway to train core tensegrity."] },
+      { id: "k6", slot: 3, name: "Half-Kneeling Overhead Stack Hold", equip: "kettlebell", safe: true, mode: "hold", anim: "core", fascia: "Deep Front & Arm Line", reps: "25s / side", cue: "Stack wrist, shoulder, ribcage, and hip in one vertical column.", steps: ["Kneel on one knee with glute lightly engaged.", "Press kettlebell overhead with bicep beside ear.", "Breathe smoothly into side ribs while holding."] }
+    ];
+
+    /* STATE */
+    const defaultState = {
+      onboarded: false,
+      goal: "women",
+      equip: "bodyweight",
+      kbWeight: "6kg",
+      duration: 12,
+      recoilSec: 15,
+      safeOnly: false,
+      camPreferred: true,
+      streak: 1,
+      lastWorkoutDate: null,
+      hydrationMl: 0,
+      hydrationDate: null,
+      pinnedIds: [],
+      todayRollIds: [],
+      rollDate: null,
+      completedCounts: {},
+      postureHistory: [
+        { date: "D-4", score: 75 },
+        { date: "D-3", score: 79 },
+        { date: "D-2", score: 82 },
+        { date: "Yesterday", score: 85 }
+      ]
+    };
+
+    function loadSafeState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? { ...defaultState, ...JSON.parse(raw) } : { ...defaultState };
+      } catch (e) {
+        return { ...defaultState };
       }
+    }
 
-      /* 24-MOVE MYOFASCIAL & STRUCTURE EXERCISE VAULT */
-      const EXERCISES = [
-        // Slot 0: Mobility & Front/Spiral Release
-        { id: "m1", slot: 0, name: "Doorway Pectoral Spiral Opener", equip: "bodyweight", safe: true, mode: "hold", anim: "stretch", fascia: "Superficial Front & Spiral Line", reps: "40s Hold + 10s Pulse", cue: "Forearm at 90°, rotate ribs gently away while breathing into upper sternum.", steps: ["Place forearm on doorframe at shoulder height.", "Step forward and rotate torso 15° away for spiral tension.", "Inhale 360° into upper ribs; finish with gentle micro-pulses."] },
-        { id: "m2", slot: 0, name: "Thoracic Open-Book 3D Twist", equip: "bodyweight", safe: true, mode: "rep", anim: "stretch", fascia: "Spiral & Lateral Line", reps: "8 / side", cue: "Keep knees stacked; sweep top arm wide across chest with full rib expansion.", steps: ["Lie on side with knees bent at 90°.", "Sweep top arm open toward opposite floor.", "Exhale to soften sternum; pulse gently at end range."] },
-        { id: "m3", slot: 0, name: "Cervical Chin-Glide & Sternum Lift", equip: "bodyweight", safe: true, mode: "rep", anim: "stretch", fascia: "Deep Front Line", reps: "12 slow glides", cue: "Glide head straight back while lifting collarbone upward without shrugging.", steps: ["Sit or stand tall with soft knees.", "Draw chin horizontally back to lengthen neck fascia.", "Lift sternum 1 cm on inhale; relax shoulders down."] },
-        { id: "m4", slot: 0, name: "Cat-Cow Scapular Fascia Glide", equip: "bodyweight", safe: true, mode: "rep", anim: "stretch", fascia: "Superficial Back & Front Line", reps: "10 cycles", cue: "Push floor away to spread shoulder blades, then glide chest forward.", steps: ["Start on hands and knees with wrists under shoulders.", "Press palms down to dome upper back fascia.", "Drop ribs and glide sternum forward on inhale."] },
-        { id: "m5", slot: 0, name: "Child's Pose Lateral Lat Reach", equip: "bodyweight", safe: true, mode: "hold", anim: "stretch", fascia: "Lateral & Functional Back Line", reps: "35s / side", cue: "Walk hands diagonally to open underarm and lateral ribcage fascia.", steps: ["Sink hips back toward heels.", "Walk both hands 30° to the right.", "Breathe into left side ribs to lengthen fascial sheath."] },
-        { id: "m6", slot: 0, name: "Kettlebell Bent-Knee Rib Pullover", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Superficial Front & Arm Line", reps: "10 reps", cue: "Keep lower ribs knitted down as kettlebell arcs overhead.", steps: ["Lie on back holding kettlebell horns above chest.", "Lower bell slowly behind head with soft elbows.", "Spring back smoothly using lats and upper chest."] },
+    let state = loadSafeState();
 
-        // Slot 1: Chest Lift & Pectoral Foundation
-        { id: "c1", slot: 1, name: "Incline Wall/Bench Elastic Push-Up", equip: "bodyweight", safe: true, mode: "rep", anim: "press", fascia: "Superficial Front & Deep Front Arm Line", reps: "12 reps + Recoil", cue: "Elbows at 45°; finish final seconds with small elastic bounce at bottom.", steps: ["Place hands slightly wider than shoulders on sturdy bench/wall.", "Lower chest with straight spine and tucked ribs.", "Drive up smoothly; finish set with light elastic pulses."] },
-        { id: "c2", slot: 1, name: "Isometric Prayer Sternum Squeeze", equip: "bodyweight", safe: true, mode: "hold", anim: "press", fascia: "Superficial Front Line", reps: "35s Squeeze + Pulse", cue: "Press palms together at chest height while lifting breastbone.", steps: ["Bring palms together in front of sternum.", "Press hands inward at 70% effort without rounding shoulders.", "Pulse hands forward 2 inches during recoil phase."] },
-        { id: "c3", slot: 1, name: "Single-Arm Kettlebell Floor Press", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Spiral & Front Arm Line", reps: "10 / arm", cue: "Keep wrist neutral; tap triceps softly on floor and press vertically.", steps: ["Lie with knees bent and kettlebell racked safely.", "Lower elbow at 45° until back of arm touches floor.", "Press up while keeping opposite shoulder grounded."] },
-        { id: "c4", slot: 1, name: "Kettlebell Svend Crush Press", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Superficial Front & Deep Arm Line", reps: "12 reps", cue: "Crush bell between palms at chest level and press straight forward.", steps: ["Hold kettlebell body between both palms at sternum.", "Squeeze inward to ignite inner pectoral fascia.", "Extend arms forward without shrugging traps."] },
-        { id: "c5", slot: 1, name: "Wide-to-Narrow Floor Chest Press", equip: "kettlebell", safe: true, mode: "rep", anim: "press", fascia: "Anterior Functional Line", reps: "10 reps", cue: "Hold kettlebell by horns; lower to lower-chest and press cleanly.", steps: ["Grip kettlebell horns firmly over chest.", "Lower with controlled 2-second tempo.", "Press up and finish with rhythmic mini-pulses."] },
-        { id: "c6", slot: 1, name: "Tempo Floor Push-Up", equip: "bodyweight", safe: false, mode: "rep", anim: "press", fascia: "Superficial Front Line", reps: "10 reps", cue: "Keep ear, shoulder, and hip aligned in one straight tensegrity line.", steps: ["Set hands under shoulders with fingers spread.", "Lower chest toward floor in 3 seconds.", "Press floor away without sagging hips."] },
+    function persist() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
 
-        // Slot 2: Upper-Back & Bra-Line Suspension
-        { id: "b1", slot: 2, name: "Wall Angels Scapular Glide", equip: "bodyweight", safe: true, mode: "rep", anim: "pull", fascia: "Superficial Back & Posterior Arm Line", reps: "12 slow glides", cue: "Keep ribs down and slide wrists upward along wall like wings.", steps: ["Stand with back and head resting lightly against wall.", "Raise arms into W-shape with elbows near wall.", "Glide arms overhead into Y without arching lower back."] },
-        { id: "b2", slot: 2, name: "Prone Y-T-W Suspension Raises", equip: "bodyweight", safe: false, mode: "rep", anim: "pull", fascia: "Superficial Back Line", reps: "8 cycles", cue: "Thumbs point up; lift arms using mid-back rather than neck.", steps: ["Lie face down with forehead resting on folded towel.", "Lift arms in Y, T, and W positions with thumbs up.", "Hold top briefly to suspend upper chest posture."] },
-        { id: "b3", slot: 2, name: "Standing Bent-Over Scapular Squeeze", equip: "bodyweight", safe: true, mode: "rep", anim: "pull", fascia: "Superficial Back & Spiral Line", reps: "15 reps", cue: "Hinge hips back 30°; draw shoulder blades together and downward.", steps: ["Hinge hips back with long flat spine.", "Pull elbows wide and squeeze shoulder blades.", "Add rapid rhythmic pulses in the final recoil phase."] },
-        { id: "b4", slot: 2, name: "Single-Arm Kettlebell Row", equip: "kettlebell", safe: true, mode: "rep", anim: "pull", fascia: "Posterior Functional & Back Line", reps: "12 / arm", cue: "Pull kettlebell handle toward hip pocket; keep collarbone open.", steps: ["Support one hand on bench or front thigh.", "Row kettlebell smoothly toward hip.", "Lower with control to stretch lat fascia."] },
-        { id: "b5", slot: 2, name: "Kettlebell 360° Ribcage Halo", equip: "kettlebell", safe: true, mode: "rep", anim: "pull", fascia: "Spiral & Arm Fascial Lines", reps: "6 / direction", cue: "Orbit kettlebell close around head while keeping ribs stacked.", steps: ["Hold kettlebell upside down by horns at chest.", "Circle bell smoothly around ear and back of head.", "Keep pelvis and ribcage completely still."] },
-        { id: "b6", slot: 2, name: "Staggered Gorilla Kettlebell Row", equip: "kettlebell", safe: true, mode: "rep", anim: "pull", fascia: "Spiral & Superficial Back Line", reps: "10 / side", cue: "Square shoulders to floor; pull bell cleanly without torso twist.", steps: ["Take split stance with flat back.", "Row kettlebell while anchoring opposite shoulder.", "Breathe steadily through lower ribs."] },
+    function todayStr() {
+      return new Date().toISOString().slice(0, 10);
+    }
 
-        // Slot 3: Core, Ribcage & Pelvic Alignment
-        { id: "k1", slot: 3, name: "Slow Tempo Dead Bug", equip: "bodyweight", safe: true, mode: "rep", anim: "core", fascia: "Deep Front Line", reps: "10 alternating", cue: "Exhale fully to knit lower ribs down as opposite arm and leg reach.", steps: ["Lie on back with knees over hips and arms vertical.", "Exhale and extend opposite arm and leg slowly.", "Keep lower back gently connected to mat."] },
-        { id: "k2", slot: 3, name: "Glute Bridge with Sternum Lift", equip: "bodyweight", safe: true, mode: "rep", anim: "core", fascia: "Deep Front & Superficial Back Line", reps: "12 reps", cue: "Press arms into floor to open chest while lifting hips smoothly.", steps: ["Lie on back with heels hip-width apart.", "Press back of arms into floor as hips rise.", "Avoid flaring ribs at the top."] },
-        { id: "k3", slot: 3, name: "Bird-Dog Fascial Cross-Reach", equip: "bodyweight", safe: true, mode: "rep", anim: "core", fascia: "Spiral & Posterior Functional Line", reps: "8 / side", cue: "Reach long through heel and fingertips rather than lifting high.", steps: ["Start in tabletop with neutral spine.", "Extend right arm and left leg horizontally.", "Pause 2 seconds to feel diagonal fascial tension."] },
-        { id: "k4", slot: 3, name: "Kettlebell Suitcase Posture March", equip: "kettlebell", safe: true, mode: "rep", anim: "core", fascia: "Lateral & Deep Front Line", reps: "20 marches", cue: "Hold kettlebell at one side; march slowly without leaning.", steps: ["Hold kettlebell in one hand at side.", "Stand tall with crown of head lifted.", "March knees slowly while keeping shoulders level."] },
-        { id: "k5", slot: 3, name: "Kettlebell Around-the-World Orbit", equip: "kettlebell", safe: true, mode: "rep", anim: "core", fascia: "Spiral & Deep Front Line", reps: "10 / direction", cue: "Pass bell smoothly around hips while keeping sternum upright.", steps: ["Stand feet hip-width apart with soft knees.", "Pass kettlebell from hand to hand around waist.", "Resist hip sway to train core tensegrity."] },
-        { id: "k6", slot: 3, name: "Half-Kneeling Overhead Stack Hold", equip: "kettlebell", safe: true, mode: "hold", anim: "core", fascia: "Deep Front & Arm Line", reps: "25s / side", cue: "Stack wrist, shoulder, ribcage, and hip in one vertical column.", steps: ["Kneel on one knee with glute lightly engaged.", "Press kettlebell overhead with bicep beside ear.", "Breathe smoothly into side ribs while holding."] }
-      ];
+    if (state.hydrationDate !== todayStr()) {
+      state.hydrationMl = 0;
+      state.hydrationDate = todayStr();
+    }
 
-      /* DEFAULT STATE */
-      const defaultState = {
-        onboarded: false,
-        goal: "women",
-        equip: "bodyweight",
-        kbWeight: "6kg",
-        duration: 12,
-        recoilSec: 15,
-        safeOnly: false,
-        streak: 1,
-        lastWorkoutDate: null,
-        hydrationMl: 0,
-        hydrationDate: null,
-        pinnedIds: [],
-        todayRollIds: [],
-        rollDate: null,
-        completedCounts: {},
-        postureHistory: [
-          { date: "D-4", score: 74 },
-          { date: "D-3", score: 78 },
-          { date: "D-2", score: 81 },
-          { date: "Yesterday", score: 84 }
-        ]
-      };
-
-      function loadSafeState() {
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return { ...defaultState };
-          const parsed = JSON.parse(raw);
-          return { ...defaultState, ...parsed };
-        } catch (e) {
-          return { ...defaultState };
-        }
-      }
-
-      let state = loadSafeState();
-
-      function persist() {
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        } catch (e) {
-          /* ignore storage quota errors */
-        }
-      }
-
-      function todayStr() {
-        return new Date().toISOString().slice(0, 10);
-      }
-
-      if (state.hydrationDate !== todayStr()) {
-        state.hydrationMl = 0;
-        state.hydrationDate = todayStr();
-      }
-
-      /* SVG MOTION GENERATOR */
-      function getExerciseSvg(type) {
-        if (type === "press") {
-          return `<svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="11" r="4" fill="#38bdf8"/>
-            <path d="M14 26L24 19L34 26" stroke="#f8fafc" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
-            <rect x="12" y="34" width="24" height="3" rx="1.5" fill="#475569"/>
-          </svg>`;
-        }
-        if (type === "pull") {
-          return `<svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="12" r="4" fill="#34d399"/>
-            <path d="M12 18L24 25L36 18" stroke="#34d399" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
-            <path d="M24 17V36" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
-          </svg>`;
-        }
-        if (type === "core") {
-          return `<svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-            <circle cx="15" cy="28" r="4" fill="#fbbf24"/>
-            <path d="M20 28H35L39 18" stroke="#f8fafc" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
-            <path d="M26 28L22 15" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>`;
-        }
-        return `<svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="12" r="4" fill="#a78bfa"/>
-          <path d="M11 21C16 15 32 15 37 21" stroke="#c4b5fd" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
-          <path d="M24 17V37" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+    /* SVG MOTION GENERATOR */
+    function getExerciseSvg(type) {
+      if (type === "press") {
+        return `<svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="11" r="4" fill="#38bdf8"/>
+          <path d="M14 26L24 19L34 26" stroke="#f8fafc" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
+          <rect x="12" y="34" width="24" height="3" rx="1.5" fill="#475569"/>
         </svg>`;
       }
-
-      /* SLOT-MACHINE CONTROLLED RANDOMIZER */
-      function getEligiblePool(slotIndex) {
-        return EXERCISES.filter((ex) => {
-          if (ex.slot !== slotIndex) return false;
-          if (state.equip === "bodyweight" && ex.equip === "kettlebell") return false;
-          if (state.safeOnly && !ex.safe) return false;
-          return true;
-        });
+      if (type === "pull") {
+        return `<svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="12" r="4" fill="#34d399"/>
+          <path d="M12 18L24 25L36 18" stroke="#34d399" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
+          <path d="M24 17V36" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+        </svg>`;
       }
-
-      function generateRoll(forceNew = false) {
-        const today = todayStr();
-        if (!forceNew && state.rollDate === today && Array.isArray(state.todayRollIds) && state.todayRollIds.length === 5) {
-          const valid = state.todayRollIds.every((id) => EXERCISES.some((e) => e.id === id));
-          if (valid) return;
-        }
-
-        const slotPlan = [0, 1, 2, 3, 0];
-        const nextIds = [];
-
-        slotPlan.forEach((slotIdx, idx) => {
-          const existingId = state.todayRollIds[idx];
-          if (existingId && state.pinnedIds.includes(existingId)) {
-            const pinnedEx = EXERCISES.find((e) => e.id === existingId);
-            if (pinnedEx && (!state.safeOnly || pinnedEx.safe) && (state.equip === "kettlebell" || pinnedEx.equip === "bodyweight")) {
-              nextIds.push(existingId);
-              return;
-            }
-          }
-
-          let pool = getEligiblePool(slotIdx).filter((e) => !nextIds.includes(e.id));
-          if (pool.length === 0) pool = getEligiblePool(slotIdx);
-          if (pool.length === 0) pool = EXERCISES.filter((e) => e.slot === slotIdx);
-
-          const chosen = pool[Math.floor(Math.random() * pool.length)];
-          nextIds.push(chosen.id);
-        });
-
-        state.todayRollIds = nextIds;
-        state.rollDate = today;
-        persist();
+      if (type === "core") {
+        return `<svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+          <circle cx="15" cy="28" r="4" fill="#fbbf24"/>
+          <path d="M20 28H35L39 18" stroke="#f8fafc" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
+          <path d="M26 28L22 15" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>`;
       }
+      return `<svg width="42" height="42" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="12" r="4" fill="#a78bfa"/>
+        <path d="M11 21C16 15 32 15 37 21" stroke="#c4b5fd" stroke-width="3" stroke-linecap="round" class="anim-bob"/>
+        <path d="M24 17V37" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+      </svg>`;
+    }
 
-      function generateDeskReset() {
-        const deskIds = ["m3", "m1", "b1", "b3", "m5"];
-        state.todayRollIds = deskIds;
-        state.rollDate = todayStr();
-        persist();
-        renderAll();
-        showToast("⚡ 5-Min Desk & Fascia Reset Loaded!");
+    /* RANDOMIZER */
+    function getEligiblePool(slotIndex) {
+      return EXERCISES.filter((ex) => {
+        if (ex.slot !== slotIndex) return false;
+        if (state.equip === "bodyweight" && ex.equip === "kettlebell") return false;
+        if (state.safeOnly && !ex.safe) return false;
+        return true;
+      });
+    }
+
+    function generateRoll(forceNew = false) {
+      const today = todayStr();
+      if (!forceNew && state.rollDate === today && Array.isArray(state.todayRollIds) && state.todayRollIds.length === 5) {
+        if (state.todayRollIds.every((id) => EXERCISES.some((e) => e.id === id))) return;
       }
-
-      function getLevel(exId) {
-        const count = state.completedCounts[exId] || 0;
-        if (count >= 6) return 3;
-        if (count >= 3) return 2;
-        return 1;
-      }
-
-      function getPrescriptionText(ex) {
-        const lv = getLevel(ex.id);
-        const bonus = lv > 1 ? ` • Lv.${lv}` : "";
-        const weightNote = ex.equip === "kettlebell" ? ` (${state.kbWeight})` : "";
-        return `${ex.reps}${weightNote}${bonus}`;
-      }
-
-      /* RENDER UI */
-      function renderControls() {
-        document.querySelectorAll("#goalRow .pill").forEach((btn) => {
-          btn.classList.toggle("active", btn.dataset.goal === state.goal);
-        });
-
-        document.querySelectorAll("#equipRow .pill[data-equip]").forEach((btn) => {
-          btn.classList.toggle("active", btn.dataset.equip === state.equip);
-        });
-
-        document.querySelectorAll("#equipRow .pill[data-kb]").forEach((btn) => {
-          btn.style.display = state.equip === "kettlebell" ? "inline-block" : "none";
-          btn.classList.toggle("active-emerald", btn.dataset.kb === state.kbWeight);
-        });
-
-        document.querySelectorAll("#metaRow .pill[data-recoil]").forEach((btn) => {
-          btn.classList.toggle("active", Number(btn.dataset.recoil) === Number(state.recoilSec));
-        });
-
-        const safeBtn = $("safeToggleBtn");
-        if (safeBtn) {
-          safeBtn.textContent = `Core/Diastasis Safe: ${state.safeOnly ? "ON" : "OFF"}`;
-          safeBtn.classList.toggle("active-emerald", state.safeOnly);
-        }
-
-        $("streakVal").textContent = `${state.streak}d`;
-        const latestScore = state.postureHistory.length ? state.postureHistory[state.postureHistory.length - 1].score : "--";
-        $("postureScoreVal").textContent = latestScore === "--" ? "--" : `${latestScore}/100`;
-        $("hydrationVal").textContent = `${state.hydrationMl}ml`;
-      }
-
-      const SLOT_NAMES = [
-        "Slot 1 • Myofascial Release",
-        "Slot 2 • Chest Structure Lift",
-        "Slot 3 • Upper-Back Suspension",
-        "Slot 4 • Biotensegrity Core",
-        "Slot 5 • Elastic Decompression"
-      ];
-
-      function renderRollList() {
-        const container = $("slotList");
-        if (!container) return;
-        container.innerHTML = "";
-
-        state.todayRollIds.forEach((id, idx) => {
-          const ex = EXERCISES.find((e) => e.id === id);
-          if (!ex) return;
-          const isPinned = state.pinnedIds.includes(ex.id);
-          const lv = getLevel(ex.id);
-
-          const card = document.createElement("div");
-          card.className = `exercise-card ${isPinned ? "pinned" : ""}`;
-          card.innerHTML = `
-            <div class="card-top">
-              <div class="svg-box">${getExerciseSvg(ex.anim)}</div>
-              <div class="card-meta">
-                <div class="slot-tag">${SLOT_NAMES[idx] || "Daily Move"}</div>
-                <div class="ex-title">${ex.name}</div>
-                <div class="badge-row">
-                  <span class="badge fascia">🧬 ${ex.fascia}</span>
-                  ${ex.equip === "kettlebell" ? `<span class="badge kb">🔔 ${state.kbWeight}</span>` : `<span class="badge">Bodyweight</span>`}
-                  <span class="badge level">Lv.${lv}</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer">
-              <div class="prescription">${getPrescriptionText(ex)}</div>
-              <div class="card-btns">
-                <button class="mini-btn" data-guide="${ex.id}">Guide</button>
-                <button class="mini-btn ${isPinned ? "pinned-btn" : ""}" data-pin="${ex.id}">${isPinned ? "📌 Pinned" : "Pin"}</button>
-              </div>
-            </div>
-            <div class="guide-drawer" id="guide-${ex.id}">
-              <div><strong>1. Setup:</strong> ${ex.steps[0]}</div>
-              <div><strong>2. Move:</strong> ${ex.steps[1]}</div>
-              <div><strong>3. Fascia Breath:</strong> ${ex.steps[2]}</div>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-
-        container.querySelectorAll("[data-guide]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const drawer = $(`guide-${btn.dataset.guide}`);
-            if (drawer) drawer.classList.toggle("open");
-          });
-        });
-
-        container.querySelectorAll("[data-pin]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const id = btn.dataset.pin;
-            if (state.pinnedIds.includes(id)) {
-              state.pinnedIds = state.pinnedIds.filter((x) => x !== id);
-              showToast("Unpinned move");
-            } else {
-              state.pinnedIds.push(id);
-              showToast("📌 Move pinned for next re-roll");
-            }
-            persist();
-            renderRollList();
-          });
-        });
-      }
-
-      function renderVaultAndChart() {
-        const vault = $("vaultList");
-        if (vault) {
-          vault.innerHTML = EXERCISES.map((ex) => `
-            <div style="background:var(--surface-2);border-radius:12px;padding:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
-              <div>
-                <div style="font-size:0.82rem;font-weight:700;">${ex.name}</div>
-                <div style="font-size:0.68rem;color:#c4b5fd;">🧬 ${ex.fascia} • ${ex.equip === "kettlebell" ? "1 KB" : "Bodyweight"}</div>
-              </div>
-              <span class="badge level">Lv.${getLevel(ex.id)}</span>
-            </div>
-          `).join("");
-        }
-
-        const sel = $("mirrorExerciseSelect");
-        if (sel && sel.options.length === 0) {
-          EXERCISES.forEach((ex) => {
-            const opt = document.createElement("option");
-            opt.value = ex.id;
-            opt.textContent = `${ex.name} (${ex.mode === "hold" ? "Hold" : "Reps"})`;
-            sel.appendChild(opt);
-          });
-        }
-
-        const chartWrap = $("svgTrendChartContainer");
-        if (chartWrap) {
-          const pts = state.postureHistory.slice(-7);
-          const w = 320;
-          const h = 110;
-          if (pts.length < 2) {
-            chartWrap.innerHTML = `<div style="font-size:0.76rem;color:var(--text-muted);padding-top:36px;text-align:center;">Log at least 2 posture scans to view trend line.</div>`;
+      const slotPlan = [0, 1, 2, 3, 0];
+      const nextIds = [];
+      slotPlan.forEach((slotIdx, idx) => {
+        const existingId = state.todayRollIds[idx];
+        if (existingId && state.pinnedIds.includes(existingId)) {
+          const pinnedEx = EXERCISES.find((e) => e.id === existingId);
+          if (pinnedEx && (!state.safeOnly || pinnedEx.safe) && (state.equip === "kettlebell" || pinnedEx.equip === "bodyweight")) {
+            nextIds.push(existingId);
             return;
           }
-          const coords = pts.map((p, i) => {
-            const x = 24 + (i * (w - 48)) / (pts.length - 1);
-            const y = h - 22 - ((Math.max(50, Math.min(100, p.score)) - 50) / 50) * (h - 40);
-            return { x, y, score: p.score, date: p.date };
-          });
-          const poly = coords.map((c) => `${c.x},${c.y}`).join(" ");
-          chartWrap.innerHTML = `
-            <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%;">
-              <polyline fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${poly}" />
-              ${coords.map((c) => `
-                <circle cx="${c.x}" cy="${c.y}" r="4.5" fill="#34d399" />
-                <text x="${c.x}" y="${c.y - 8}" fill="#f8fafc" font-size="9" font-weight="700" text-anchor="middle">${c.score}</text>
-                <text x="${c.x}" y="${h - 4}" fill="#94a3b8" font-size="8" text-anchor="middle">${c.date}</text>
-              `).join("")}
-            </svg>
-          `;
         }
+        let pool = getEligiblePool(slotIdx).filter((e) => !nextIds.includes(e.id));
+        if (pool.length === 0) pool = getEligiblePool(slotIdx);
+        if (pool.length === 0) pool = EXERCISES.filter((e) => e.slot === slotIdx);
+        nextIds.push(pool[Math.floor(Math.random() * pool.length)].id);
+      });
+      state.todayRollIds = nextIds;
+      state.rollDate = today;
+      persist();
+    }
+
+    function generateDeskReset() {
+      state.todayRollIds = ["m3", "m1", "b1", "b3", "m5"];
+      state.rollDate = todayStr();
+      persist();
+      renderAll();
+      showToast("⚡ 5-Min Desk & Fascia Reset Loaded!");
+    }
+
+    function getLevel(exId) {
+      const count = state.completedCounts[exId] || 0;
+      return count >= 6 ? 3 : count >= 3 ? 2 : 1;
+    }
+
+    function getPrescriptionText(ex) {
+      const lv = getLevel(ex.id);
+      const bonus = lv > 1 ? ` • Lv.${lv}` : "";
+      const weightNote = ex.equip === "kettlebell" ? ` (${state.kbWeight})` : "";
+      return `${ex.reps}${weightNote}${bonus}`;
+    }
+
+    /* RENDER UI */
+    const SLOT_NAMES = [
+      "Slot 1 • Myofascial Release",
+      "Slot 2 • Chest Structure Lift",
+      "Slot 3 • Upper-Back Suspension",
+      "Slot 4 • Biotensegrity Core",
+      "Slot 5 • Elastic Decompression"
+    ];
+
+    function renderControls() {
+      document.querySelectorAll("#goalRow .pill").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.goal === state.goal);
+      });
+      document.querySelectorAll("#equipRow .pill[data-equip]").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.equip === state.equip);
+      });
+      document.querySelectorAll("#equipRow .pill[data-kb]").forEach((btn) => {
+        btn.style.display = state.equip === "kettlebell" ? "inline-block" : "none";
+        btn.classList.toggle("active-emerald", btn.dataset.kb === state.kbWeight);
+      });
+      document.querySelectorAll("#metaRow .pill[data-recoil]").forEach((btn) => {
+        btn.classList.toggle("active", Number(btn.dataset.recoil) === Number(state.recoilSec));
+      });
+      const safeBtn = $("safeToggleBtn");
+      if (safeBtn) {
+        safeBtn.textContent = `Core/Diastasis Safe: ${state.safeOnly ? "ON" : "OFF"}`;
+        safeBtn.classList.toggle("active-emerald", state.safeOnly);
       }
+      $("streakVal").textContent = `${state.streak}d`;
+      const latestScore = state.postureHistory.length ? state.postureHistory[state.postureHistory.length - 1].score : "--";
+      $("postureScoreVal").textContent = latestScore === "--" ? "--" : `${latestScore}/100`;
+      $("hydrationVal").textContent = `${state.hydrationMl}ml`;
+    }
 
-      function renderAll() {
-        renderControls();
-        renderRollList();
-        renderVaultAndChart();
-      }
+    function renderRollList() {
+      const container = $("slotList");
+      if (!container) return;
+      container.innerHTML = "";
+      state.todayRollIds.forEach((id, idx) => {
+        const ex = EXERCISES.find((e) => e.id === id);
+        if (!ex) return;
+        const isPinned = state.pinnedIds.includes(ex.id);
+        const lv = getLevel(ex.id);
+        const card = document.createElement("div");
+        card.className = `exercise-card ${isPinned ? "pinned" : ""}`;
+        card.innerHTML = `
+          <div class="card-top">
+            <div class="svg-box">${getExerciseSvg(ex.anim)}</div>
+            <div class="card-meta">
+              <div class="slot-tag">${SLOT_NAMES[idx] || "Daily Move"}</div>
+              <div class="ex-title">${ex.name}</div>
+              <div class="badge-row">
+                <span class="badge fascia">🧬 ${ex.fascia}</span>
+                ${ex.equip === "kettlebell" ? `<span class="badge kb">🔔 ${state.kbWeight}</span>` : `<span class="badge">Bodyweight</span>`}
+                <span class="badge level">Lv.${lv}</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="prescription">${getPrescriptionText(ex)}</div>
+            <div class="card-btns">
+              <button class="mini-btn" data-guide="${ex.id}">Guide</button>
+              <button class="mini-btn ${isPinned ? "pinned-btn" : ""}" data-pin="${ex.id}">${isPinned ? "📌 Pinned" : "Pin"}</button>
+            </div>
+          </div>
+          <div class="guide-drawer" id="guide-${ex.id}">
+            <div><strong>1. Setup:</strong> ${ex.steps[0]}</div>
+            <div><strong>2. Move:</strong> ${ex.steps[1]}</div>
+            <div><strong>3. Fascia Breath:</strong> ${ex.steps[2]}</div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
 
-      /* WEB AUDIO & VOICE COACH */
-      let audioCtx = null;
-      let voiceEnabled = true;
+      container.querySelectorAll("[data-guide]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const drawer = $(`guide-${btn.dataset.guide}`);
+          if (drawer) drawer.classList.toggle("open");
+        });
+      });
 
-      function playTone(freq = 520, duration = 0.09, type = "sine") {
-        try {
-          if (!audioCtx) {
-            const Ctx = window.AudioContext || window.webkitAudioContext;
-            if (Ctx) audioCtx = new Ctx();
+      container.querySelectorAll("[data-pin]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.pin;
+          if (state.pinnedIds.includes(id)) {
+            state.pinnedIds = state.pinnedIds.filter((x) => x !== id);
+            showToast("Unpinned move");
+          } else {
+            state.pinnedIds.push(id);
+            showToast("📌 Move pinned for next re-roll");
           }
-          if (!audioCtx) return;
-          if (audioCtx.state === "suspended") audioCtx.resume();
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = type;
-          osc.frequency.value = freq;
-          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start();
-          osc.stop(audioCtx.currentTime + duration);
-        } catch (e) {}
+          persist();
+          renderRollList();
+        });
+      });
+    }
+
+    function renderVaultAndChart() {
+      const vault = $("vaultList");
+      if (vault) {
+        vault.innerHTML = EXERCISES.map((ex) => `
+          <div style="background:var(--surface-2);border-radius:12px;padding:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;">
+            <div>
+              <div style="font-size:0.82rem;font-weight:700;">${ex.name}</div>
+              <div style="font-size:0.68rem;color:#c4b5fd;">🧬 ${ex.fascia} • ${ex.equip === "kettlebell" ? "1 KB" : "Bodyweight"}</div>
+            </div>
+            <span class="badge level">Lv.${getLevel(ex.id)}</span>
+          </div>
+        `).join("");
       }
 
-      function speakCue(text) {
-        if (!voiceEnabled) return;
+      const chartWrap = $("svgTrendChartContainer");
+      if (chartWrap) {
+        const pts = state.postureHistory.slice(-7);
+        const w = 320;
+        const h = 110;
+        if (pts.length < 2) {
+          chartWrap.innerHTML = `<div style="font-size:0.76rem;color:var(--text-muted);padding-top:36px;text-align:center;">Complete live sessions to view posture trend.</div>`;
+          return;
+        }
+        const coords = pts.map((p, i) => {
+          const x = 24 + (i * (w - 48)) / (pts.length - 1);
+          const y = h - 22 - ((Math.max(50, Math.min(100, p.score)) - 50) / 50) * (h - 40);
+          return { x, y, score: p.score, date: p.date };
+        });
+        const poly = coords.map((c) => `${c.x},${c.y}`).join(" ");
+        chartWrap.innerHTML = `
+          <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:100%;">
+            <polyline fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${poly}" />
+            ${coords.map((c) => `
+              <circle cx="${c.x}" cy="${c.y}" r="4.5" fill="#34d399" />
+              <text x="${c.x}" y="${c.y - 8}" fill="#f8fafc" font-size="9" font-weight="700" text-anchor="middle">${c.score}</text>
+              <text x="${c.x}" y="${h - 4}" fill="#94a3b8" font-size="8" text-anchor="middle">${c.date}</text>
+            `).join("")}
+          </svg>
+        `;
+      }
+    }
+
+    function renderAll() {
+      renderControls();
+      renderRollList();
+      renderVaultAndChart();
+    }
+
+    /* AUDIO & SPEECH */
+    let audioCtx = null;
+    let voiceEnabled = true;
+
+    function playTone(freq = 520, duration = 0.08, type = "sine") {
+      try {
+        if (!audioCtx) {
+          const Ctx = window.AudioContext || window.webkitAudioContext;
+          if (Ctx) audioCtx = new Ctx();
+        }
+        if (!audioCtx) return;
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function speakCue(text) {
+      if (!voiceEnabled) return;
+      try {
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(text);
+          u.rate = 1.03;
+          window.speechSynthesis.speak(u);
+        }
+      } catch (e) {}
+    }
+
+    function vibrateSafe(ms = 35) {
+      try {
+        if (navigator.vibrate) navigator.vibrate(ms);
+      } catch (e) {}
+    }
+
+    /* INTEGRATED LIVE CAMERA + MEDIAPIPE POSE LANDMARKER ENGINE */
+    let poseLandmarker = null;
+    let poseInitTried = false;
+    let camStream = null;
+    let camActive = false;
+    let overlayRafId = null;
+    let sessionAlignSamples = [];
+    let liveReps = 0;
+    let repDownState = false;
+    let holdTickCounter = 0;
+
+    async function ensurePoseLandmarker() {
+      if (poseLandmarker || poseInitTried) return poseLandmarker;
+      poseInitTried = true;
+      try {
+        const vision = await import("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs");
+        const fileset = await vision.FilesetResolver.forVisionTasks(
+          "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm"
+        );
+        poseLandmarker = await vision.PoseLandmarker.createFromOptions(fileset, {
+          baseOptions: {
+            modelAssetPath: "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",
+            delegate: "GPU"
+          },
+          runningMode: "VIDEO",
+          numPoses: 1
+        });
+      } catch (e) {
+        poseLandmarker = null;
+      }
+      return poseLandmarker;
+    }
+
+    async function startWorkoutCamera() {
+      stopWorkoutCamera();
+      const vid = $("workoutVideo");
+      const btn = $("toggleWorkoutCamBtn");
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          throw new Error("Camera unavailable");
+        }
+        camStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } },
+          audio: false
+        });
+        vid.srcObject = camStream;
+        await vid.play();
+        camActive = true;
+        if (btn) {
+          btn.textContent = "📷 Cam: ON";
+          btn.classList.add("cam-active");
+        }
+        $("liveTrackStatus").textContent = "Live Camera Active (~1.5m frame)";
+        ensurePoseLandmarker();
+        loopWorkoutOverlay();
+      } catch (err) {
+        camActive = false;
+        if (btn) {
+          btn.textContent = "📷 Cam: OFF (Guide)";
+          btn.classList.remove("cam-active");
+        }
+        $("liveTrackStatus").textContent = "Camera off/blocked — Animated Guide Mode";
+        loopWorkoutOverlay();
+      }
+    }
+
+    function stopWorkoutCamera() {
+      cancelAnimationFrame(overlayRafId);
+      camActive = false;
+      if (camStream) {
+        camStream.getTracks().forEach((t) => t.stop());
+        camStream = null;
+      }
+      const vid = $("workoutVideo");
+      if (vid) vid.srcObject = null;
+    }
+
+    function loopWorkoutOverlay() {
+      if (!playerState.active) return;
+      const canvas = $("workoutCanvas");
+      const vid = $("workoutVideo");
+      if (!canvas) return;
+
+      const w = (canvas.width = canvas.clientWidth || 320);
+      const h = (canvas.height = canvas.clientHeight || 400);
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, w, h);
+
+      const exId = state.todayRollIds[playerState.idx];
+      const activeEx = EXERCISES.find((e) => e.id === exId) || EXERCISES[0];
+
+      // Plumb reference line
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.32)";
+      ctx.setLineDash([6, 6]);
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(w * 0.5, h * 0.12);
+      ctx.lineTo(w * 0.5, h * 0.82);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      let score = 88;
+      let detected = false;
+
+      if (camActive && vid && vid.readyState >= 2 && poseLandmarker) {
         try {
-          if ("speechSynthesis" in window) {
-            window.speechSynthesis.cancel();
-            const u = new SpeechSynthesisUtterance(text);
-            u.rate = 1.03;
-            u.pitch = 1.0;
-            window.speechSynthesis.speak(u);
+          const res = poseLandmarker.detectForVideo(vid, performance.now());
+          const lm = res?.landmarks?.[0];
+          if (lm && lm[11] && lm[12]) {
+            detected = true;
+            const nose = lm[0];
+            const lSh = lm[11];
+            const rSh = lm[12];
+            const lEl = lm[13];
+            const rEl = lm[14];
+            const lWr = lm[15];
+            const rWr = lm[16];
+
+            const pts = {
+              nose: { x: nose.x * w, y: nose.y * h },
+              lSh: { x: lSh.x * w, y: lSh.y * h },
+              rSh: { x: rSh.x * w, y: rSh.y * h },
+              sternum: { x: ((lSh.x + rSh.x) / 2) * w, y: ((lSh.y + rSh.y) / 2) * h + 24 }
+            };
+
+            const shoulderTilt = Math.abs(lSh.y - rSh.y);
+            const headOffset = Math.abs(nose.x - (lSh.x + rSh.x) / 2);
+            score = Math.max(65, Math.min(99, Math.round(100 - shoulderTilt * 140 - headOffset * 95)));
+
+            // Rep / Hold detection from real landmarks
+            if (playerState.phase === "work" && !playerState.paused) {
+              if (activeEx.mode === "hold") {
+                holdTickCounter += 1;
+                if (holdTickCounter % 30 === 0) liveReps += 1;
+              } else if (lWr && rWr) {
+                const avgWristY = (lWr.y + rWr.y) / 2;
+                const avgShoulderY = (lSh.y + rSh.y) / 2;
+                if (avgWristY < avgShoulderY - 0.05 && !repDownState) {
+                  repDownState = true;
+                } else if (avgWristY > avgShoulderY + 0.02 && repDownState) {
+                  repDownState = false;
+                  liveReps += 1;
+                  playTone(720, 0.06);
+                }
+              }
+            }
+
+            // Draw skeleton lines
+            ctx.strokeStyle = score >= 82 ? "#34d399" : "#fbbf24";
+            ctx.lineWidth = 3.5;
+            ctx.beginPath();
+            ctx.moveTo(pts.lSh.x, pts.lSh.y);
+            ctx.lineTo(pts.rSh.x, pts.rSh.y);
+            ctx.lineTo(pts.sternum.x, pts.sternum.y);
+            ctx.closePath();
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(pts.nose.x, pts.nose.y);
+            ctx.lineTo(pts.sternum.x, pts.sternum.y);
+            ctx.stroke();
+
+            if (lEl && lWr) {
+              ctx.beginPath();
+              ctx.moveTo(pts.lSh.x, pts.lSh.y);
+              ctx.lineTo(lEl.x * w, lEl.y * h);
+              ctx.lineTo(lWr.x * w, lWr.y * h);
+              ctx.stroke();
+            }
+            if (rEl && rWr) {
+              ctx.beginPath();
+              ctx.moveTo(pts.rSh.x, pts.rSh.y);
+              ctx.lineTo(rEl.x * w, rEl.y * h);
+              ctx.lineTo(rWr.x * w, rWr.y * h);
+              ctx.stroke();
+            }
+
+            [pts.nose, pts.lSh, pts.rSh, pts.sternum].forEach((p, idx) => {
+              ctx.fillStyle = idx === 3 ? "#a78bfa" : "#38bdf8";
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+              ctx.fill();
+            });
           }
         } catch (e) {}
       }
 
-      function vibrateSafe(ms = 35) {
-        try {
-          if (navigator.vibrate) navigator.vibrate(ms);
-        } catch (e) {}
+      // Draw ideal framing guide box when camera is on without landmarks yet or in guide mode
+      if (!detected) {
+        ctx.strokeStyle = "rgba(167, 139, 250, 0.45)";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(w * 0.2, h * 0.16, w * 0.6, h * 0.62);
       }
 
-      /* GUIDED WORKOUT PLAYER */
-      let playerState = {
-        active: false,
+      if (playerState.phase === "work" && !playerState.paused && detected) {
+        sessionAlignSamples.push(score);
+      }
+
+      $("liveAlignChip").textContent = detected ? `Align: ${score}/100` : (camActive ? "Live Framing" : "Guide Mode");
+      $("liveRepCounter").textContent = activeEx.mode === "hold" ? `Hold: ${liveReps}s` : `Reps: ${liveReps}`;
+
+      overlayRafId = requestAnimationFrame(loopWorkoutOverlay);
+    }
+
+    /* GUIDED WORKOUT PLAYER */
+    let playerState = {
+      active: false,
+      paused: false,
+      idx: 0,
+      phase: "work",
+      secLeft: 40,
+      timerId: null,
+      wakeLock: null
+    };
+
+    async function requestWakeLock() {
+      try {
+        if ("wakeLock" in navigator) {
+          playerState.wakeLock = await navigator.wakeLock.request("screen");
+        }
+      } catch (e) {}
+    }
+
+    function releaseWakeLock() {
+      try {
+        if (playerState.wakeLock) {
+          playerState.wakeLock.release();
+          playerState.wakeLock = null;
+        }
+      } catch (e) {}
+    }
+
+    function startWorkoutPlayer() {
+      const workDuration = state.duration === 5 ? 30 : state.duration === 20 ? 50 : 40;
+      liveReps = 0;
+      repDownState = false;
+      holdTickCounter = 0;
+      sessionAlignSamples = [];
+
+      playerState = {
+        active: true,
         paused: false,
         idx: 0,
-        phase: "work", // work | rest
-        secLeft: 40,
+        phase: "work",
+        secLeft: workDuration,
         timerId: null,
         wakeLock: null
       };
 
-      async function requestWakeLock() {
-        try {
-          if ("wakeLock" in navigator) {
-            playerState.wakeLock = await navigator.wakeLock.request("screen");
-          }
-        } catch (e) {}
+      $("playerModal").classList.add("open");
+      requestWakeLock();
+      updatePlayerUI(true);
+      if (state.camPreferred) {
+        startWorkoutCamera();
+      } else {
+        loopWorkoutOverlay();
       }
+      playerState.timerId = setInterval(tickPlayer, 1000);
+    }
 
-      function releaseWakeLock() {
-        try {
-          if (playerState.wakeLock) {
-            playerState.wakeLock.release();
-            playerState.wakeLock = null;
-          }
-        } catch (e) {}
-      }
+    function updatePlayerUI(announce = false) {
+      const exId = state.todayRollIds[playerState.idx];
+      const ex = EXERCISES.find((e) => e.id === exId) || EXERCISES[0];
+      const recoilThreshold = Number(state.recoilSec) || 15;
 
-      function startWorkoutPlayer() {
-        const workDuration = state.duration === 5 ? 30 : state.duration === 20 ? 50 : 40;
-        playerState = {
-          active: true,
-          paused: false,
-          idx: 0,
-          phase: "work",
-          secLeft: workDuration,
-          timerId: null,
-          wakeLock: null
-        };
-        $("playerModal").classList.add("open");
-        requestWakeLock();
-        updatePlayerUI(true);
-        playerState.timerId = setInterval(tickPlayer, 1000);
-      }
+      $("playerStepLabel").textContent = playerState.phase === "rest"
+        ? `REST • UP NEXT: MOVE ${playerState.idx + 1} OF 5`
+        : `MOVE ${playerState.idx + 1} OF 5 • LIVE WORKOUT`;
 
-      function updatePlayerUI(announce = false) {
-        const exId = state.todayRollIds[playerState.idx];
-        const ex = EXERCISES.find((e) => e.id === exId) || EXERCISES[0];
-        const recoilThreshold = Number(state.recoilSec) || 15;
+      $("playerSvgWrap").innerHTML = getExerciseSvg(ex.anim);
+      $("playerTitle").textContent = playerState.phase === "rest" ? `Rest & Breathe (${ex.name})` : ex.name;
+      $("playerFasciaTag").textContent = `🧬 ${ex.fascia}`;
+      $("playerCueText").textContent = ex.cue;
 
-        $("playerStepLabel").textContent = playerState.phase === "rest"
-          ? `REST • UP NEXT: MOVE ${playerState.idx + 1} OF 5`
-          : `MOVE ${playerState.idx + 1} OF 5 • WORK`;
+      const mins = String(Math.floor(playerState.secLeft / 60)).padStart(2, "0");
+      const secs = String(playerState.secLeft % 60).padStart(2, "0");
+      $("playerTimer").textContent = `${mins}:${secs}`;
 
-        $("playerSvgWrap").innerHTML = getExerciseSvg(ex.anim);
-        $("playerTitle").textContent = playerState.phase === "rest" ? `Rest & Breathe (${ex.name})` : ex.name;
-        $("playerFasciaTag").textContent = `🧬 ${ex.fascia}`;
-        $("playerCueText").textContent = ex.cue;
+      const inRecoil = playerState.phase === "work" && playerState.secLeft <= recoilThreshold && playerState.secLeft > 0;
+      $("recoilBanner").classList.toggle("active", inRecoil);
 
-        const mins = String(Math.floor(playerState.secLeft / 60)).padStart(2, "0");
-        const secs = String(playerState.secLeft % 60).padStart(2, "0");
-        $("playerTimer").textContent = `${mins}:${secs}`;
-
-        const inRecoil = playerState.phase === "work" && playerState.secLeft <= recoilThreshold && playerState.secLeft > 0;
-        $("recoilBanner").classList.toggle("active", inRecoil);
-
-        if (announce) {
-          if (playerState.phase === "work") {
-            speakCue(`Start ${ex.name}. ${ex.cue}`);
-            playTone(660, 0.14);
-          } else {
-            speakCue(`Rest for 12 seconds. Next up, ${ex.name}`);
-            playTone(440, 0.12);
-          }
+      if (announce) {
+        if (playerState.phase === "work") {
+          speakCue(`Start ${ex.name}. ${ex.cue}`);
+          playTone(660, 0.14);
+        } else {
+          speakCue(`Rest 12 seconds. Next up, ${ex.name}`);
+          playTone(440, 0.12);
         }
       }
+    }
 
-      function tickPlayer() {
-        if (!playerState.active || playerState.paused) return;
-        playerState.secLeft -= 1;
+    function tickPlayer() {
+      if (!playerState.active || playerState.paused) return;
+      playerState.secLeft -= 1;
 
-        const recoilThreshold = Number(state.recoilSec) || 15;
-        if (playerState.phase === "work" && playerState.secLeft === recoilThreshold) {
-          speakCue("Elastic recoil phase. Light rhythmic spring and spiral breath.");
-          playTone(780, 0.12);
-          vibrateSafe(50);
-        } else if (playerState.phase === "work" && playerState.secLeft < recoilThreshold && playerState.secLeft > 3) {
-          playTone(540, 0.04);
-        } else if (playerState.secLeft <= 3 && playerState.secLeft > 0) {
-          playTone(880, 0.07);
+      const recoilThreshold = Number(state.recoilSec) || 15;
+      if (playerState.phase === "work" && playerState.secLeft === recoilThreshold) {
+        speakCue("Elastic recoil phase. Light rhythmic spring and spiral breath.");
+        playTone(780, 0.12);
+        vibrateSafe(50);
+      } else if (playerState.phase === "work" && playerState.secLeft < recoilThreshold && playerState.secLeft > 3) {
+        playTone(540, 0.04);
+      } else if (playerState.secLeft <= 3 && playerState.secLeft > 0) {
+        playTone(880, 0.07);
+      }
+
+      if (playerState.secLeft <= 0) {
+        advancePlayerStep();
+        return;
+      }
+      updatePlayerUI(false);
+    }
+
+    function advancePlayerStep() {
+      const workDuration = state.duration === 5 ? 30 : state.duration === 20 ? 50 : 40;
+      if (playerState.phase === "work") {
+        const doneId = state.todayRollIds[playerState.idx];
+        if (doneId) {
+          state.completedCounts[doneId] = (state.completedCounts[doneId] || 0) + 1;
         }
-
-        if (playerState.secLeft <= 0) {
-          advancePlayerStep();
+        if (playerState.idx >= state.todayRollIds.length - 1) {
+          finishWorkoutSession();
           return;
         }
-        updatePlayerUI(false);
+        playerState.idx += 1;
+        playerState.phase = "rest";
+        playerState.secLeft = 12;
+        liveReps = 0;
+        holdTickCounter = 0;
+        updatePlayerUI(true);
+      } else {
+        playerState.phase = "work";
+        playerState.secLeft = workDuration;
+        liveReps = 0;
+        holdTickCounter = 0;
+        updatePlayerUI(true);
+      }
+    }
+
+    function stopPlayer() {
+      playerState.active = false;
+      clearInterval(playerState.timerId);
+      stopWorkoutCamera();
+      releaseWakeLock();
+      $("playerModal").classList.remove("open");
+    }
+
+    function finishWorkoutSession() {
+      stopPlayer();
+      const today = todayStr();
+      if (state.lastWorkoutDate !== today) {
+        state.streak += 1;
+        state.lastWorkoutDate = today;
       }
 
-      function advancePlayerStep() {
-        const workDuration = state.duration === 5 ? 30 : state.duration === 20 ? 50 : 40;
-        if (playerState.phase === "work") {
-          const doneId = state.todayRollIds[playerState.idx];
-          if (doneId) {
-            state.completedCounts[doneId] = (state.completedCounts[doneId] || 0) + 1;
+      const avgScore = sessionAlignSamples.length > 0
+        ? Math.round(sessionAlignSamples.reduce((a, b) => a + b, 0) / sessionAlignSamples.length)
+        : 88;
+      const label = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      state.postureHistory.push({ date: label, score: avgScore });
+      if (state.postureHistory.length > 14) state.postureHistory.shift();
+
+      persist();
+      renderAll();
+
+      const lines = [...new Set(state.todayRollIds.map((id) => {
+        const ex = EXERCISES.find((e) => e.id === id);
+        return ex ? ex.fascia : null;
+      }).filter(Boolean))];
+
+      $("summaryScoreText").textContent = `Session Alignment Score: ${avgScore}/100`;
+      $("summaryLinesList").innerHTML = lines.map((l) => `<span class="badge fascia">🧬 ${l}</span>`).join("");
+      $("summaryModal").classList.add("open");
+      speakCue("Session complete. Hydrate your fascia within 15 minutes.");
+      playTone(784, 0.22);
+      vibrateSafe(80);
+    }
+
+    /* ICS CALENDAR REMINDER & BACKUP */
+    function downloadIcsReminder() {
+      const ics = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//TENSI//Fascia & Posture PWA//EN",
+        "BEGIN:VEVENT",
+        "SUMMARY:TENSI — Daily Fascia & Structure Roll",
+        "DESCRIPTION:Lift Your Structure. Spring Your Fascia. 12-min daily live session.",
+        "DTSTART:20261128T080000",
+        "DURATION:PT15M",
+        "RRULE:FREQ=DAILY",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "tensi-daily-reminder.ics";
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("📅 Downloaded tensi-daily-reminder.ics");
+    }
+
+    /* JSON PATCH STUDIO & GITHUB DISPATCH */
+    function loadGhConfig() {
+      try {
+        const raw = localStorage.getItem(GH_CONFIG_KEY);
+        if (!raw) return;
+        const cfg = JSON.parse(raw);
+        if (cfg.owner) $("ghOwnerInput").value = cfg.owner;
+        if (cfg.repo) $("ghRepoInput").value = cfg.repo;
+        if (cfg.event) $("ghEventInput").value = cfg.event;
+        if (cfg.token) $("ghTokenInput").value = cfg.token;
+      } catch (e) {}
+    }
+
+    function saveGhConfig() {
+      try {
+        localStorage.setItem(GH_CONFIG_KEY, JSON.stringify({
+          owner: $("ghOwnerInput").value.trim(),
+          repo: $("ghRepoInput").value.trim(),
+          event: $("ghEventInput").value.trim() || "tensi_inject_code",
+          token: $("ghTokenInput").value.trim()
+        }));
+      } catch (e) {}
+    }
+
+    function getSafeCurrentDocumentSource() {
+      const rawHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      return rawHtml.replace(/<\/script>/gi, "<\\/script>");
+    }
+
+    function buildJsonPatchObject() {
+      const filePath = $("patchPathInput").value.trim() || "index.html";
+      const content = $("rawCodeInput").value;
+      const payload = {
+        target_branch: "main",
+        feature_branch_prefix: "tensi-patch",
+        commit_message: `feat(tensi): update ${filePath} via TENSI JSON Patch Studio`,
+        pr_title: `Auto-PR: TENSI Update (${filePath})`,
+        pr_body: "Automated code injection and merge into main via TENSI JSON Patch Studio.",
+        files: [
+          {
+            path: filePath,
+            mode: "replace",
+            content: content
           }
-          if (playerState.idx >= state.todayRollIds.length - 1) {
-            finishWorkoutSession();
-            return;
-          }
-          playerState.idx += 1;
-          playerState.phase = "rest";
-          playerState.secLeft = 12;
-          updatePlayerUI(true);
-        } else {
-          playerState.phase = "work";
-          playerState.secLeft = workDuration;
-          updatePlayerUI(true);
-        }
+        ]
+      };
+      $("jsonPreviewOutput").value = JSON.stringify(payload, null, 2);
+      return payload;
+    }
+
+    async function dispatchToGithub() {
+      saveGhConfig();
+      const owner = $("ghOwnerInput").value.trim();
+      const repo = $("ghRepoInput").value.trim();
+      const eventType = $("ghEventInput").value.trim() || "tensi_inject_code";
+      const token = $("ghTokenInput").value.trim();
+      const rawCode = $("rawCodeInput").value;
+
+      if (!owner || !repo || !token) {
+        $("dispatchStatusText").textContent = "Please fill GitHub Owner, Repo, and Personal Access Token.";
+        return;
+      }
+      if (!rawCode.trim()) {
+        $("dispatchStatusText").textContent = "Paste code or click 'Load Live TENSI HTML' first.";
+        return;
       }
 
-      function stopPlayer() {
-        playerState.active = false;
-        clearInterval(playerState.timerId);
-        releaseWakeLock();
-        $("playerModal").classList.remove("open");
-      }
+      const patchObj = buildJsonPatchObject();
+      $("dispatchStatusText").textContent = "Dispatching repository_dispatch event to GitHub...";
 
-      function finishWorkoutSession() {
-        stopPlayer();
-        const today = todayStr();
-        if (state.lastWorkoutDate !== today) {
-          state.streak += 1;
-          state.lastWorkoutDate = today;
-        }
-        persist();
-        renderAll();
-
-        const lines = [...new Set(state.todayRollIds.map((id) => {
-          const ex = EXERCISES.find((e) => e.id === id);
-          return ex ? ex.fascia : null;
-        }).filter(Boolean))];
-
-        $("summaryLinesList").innerHTML = lines.map((l) => `<span class="badge fascia">🧬 ${l}</span>`).join("");
-        $("summaryModal").classList.add("open");
-        speakCue("Session complete. Hydrate your fascia within 15 minutes.");
-        playTone(784, 0.22);
-        vibrateSafe(80);
-      }
-
-      /* ZERO-RECORDING AI POSTURE MIRROR */
-      let mirrorRunning = false;
-      let demoMode = false;
-      let mediaStream = null;
-      let animFrameId = null;
-      let latestAlignmentScore = 86;
-      let repCounter = 0;
-      let repPhaseDown = false;
-      let holdFrames = 0;
-
-      function stopMirror() {
-        mirrorRunning = false;
-        demoMode = false;
-        cancelAnimationFrame(animFrameId);
-        if (mediaStream) {
-          mediaStream.getTracks().forEach((t) => t.stop());
-          mediaStream = null;
-        }
-        const vid = $("mirrorVideo");
-        if (vid) vid.srcObject = null;
-      }
-
-      async function startLiveCameraMirror() {
-        stopMirror();
-        repCounter = 0;
-        holdFrames = 0;
-        try {
-          if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-            throw new Error("Camera API unavailable");
-          }
-          mediaStream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } },
-            audio: false
-          });
-          const vid = $("mirrorVideo");
-          vid.srcObject = mediaStream;
-          await vid.play();
-          mirrorRunning = true;
-          demoMode = false;
-          showToast("📷 Live Camera Active (Zero Video Recorded)");
-          loopMirrorCanvas();
-        } catch (err) {
-          showToast("Camera blocked/unavailable — switching to Demo Pose");
-          startDemoPoseMirror();
-        }
-      }
-
-      function startDemoPoseMirror() {
-        stopMirror();
-        repCounter = 0;
-        holdFrames = 0;
-        mirrorRunning = true;
-        demoMode = true;
-        showToast("🤖 Simulated Biotensegrity Pose Active");
-        loopMirrorCanvas();
-      }
-
-      function loopMirrorCanvas() {
-        if (!mirrorRunning) return;
-        const canvas = $("mirrorCanvas");
-        const vid = $("mirrorVideo");
-        if (!canvas) return;
-
-        const w = (canvas.width = canvas.clientWidth || 320);
-        const h = (canvas.height = canvas.clientHeight || 420);
-        const ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, w, h);
-
-        const t = performance.now() / 1000;
-        const selectedExId = $("mirrorExerciseSelect")?.value || "c1";
-        const activeEx = EXERCISES.find((e) => e.id === selectedExId) || EXERCISES[0];
-
-        // Simulated or live-guided biotensegrity landmarks (privacy-first in-memory overlay)
-        const swayX = Math.sin(t * 1.4) * 6;
-        const pulseY = Math.sin(t * 2.4) * 14;
-        const leftShoulder = { x: w * 0.34 + swayX, y: h * 0.44 + (activeEx.mode === "rep" ? pulseY * 0.4 : 0) };
-        const rightShoulder = { x: w * 0.66 + swayX, y: h * 0.44 - Math.cos(t) * 2 + (activeEx.mode === "rep" ? pulseY * 0.4 : 0) };
-        const headPoint = { x: w * 0.5 + swayX * 0.7, y: h * 0.25 };
-        const sternumPoint = { x: (leftShoulder.x + rightShoulder.x) / 2, y: (leftShoulder.y + rightShoulder.y) / 2 + 26 };
-
-        const tiltDiff = Math.abs(leftShoulder.y - rightShoulder.y);
-        latestAlignmentScore = Math.max(68, Math.min(98, Math.round(95 - tiltDiff * 1.8)));
-
-        // Rep vs Hold tracking
-        if (activeEx.mode === "hold") {
-          holdFrames += 1;
-          if (holdFrames % 30 === 0) {
-            repCounter += 1;
-            playTone(620, 0.04);
-          }
-          $("liveRepHud").textContent = `Hold: ${repCounter}s`;
-        } else {
-          if (pulseY > 10 && !repPhaseDown) {
-            repPhaseDown = true;
-          } else if (pulseY < -8 && repPhaseDown) {
-            repPhaseDown = false;
-            repCounter += 1;
-            playTone(720, 0.07);
-          }
-          $("liveRepHud").textContent = `Reps: ${repCounter}`;
-        }
-
-        // Draw Ideal Plumb Line
-        ctx.strokeStyle = "rgba(56, 189, 248, 0.35)";
-        ctx.setLineDash([6, 6]);
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(w * 0.5, h * 0.14);
-        ctx.lineTo(w * 0.5, h * 0.82);
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        // Draw Fascial Tensegrity Lines
-        ctx.strokeStyle = latestAlignmentScore >= 82 ? "#34d399" : "#fbbf24";
-        ctx.lineWidth = 3.5;
-        ctx.beginPath();
-        ctx.moveTo(leftShoulder.x, leftShoulder.y);
-        ctx.lineTo(rightShoulder.x, rightShoulder.y);
-        ctx.lineTo(sternumPoint.x, sternumPoint.y);
-        ctx.closePath();
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(headPoint.x, headPoint.y);
-        ctx.lineTo(sternumPoint.x, sternumPoint.y);
-        ctx.stroke();
-
-        [headPoint, leftShoulder, rightShoulder, sternumPoint].forEach((pt, i) => {
-          ctx.fillStyle = i === 3 ? "#a78bfa" : "#38bdf8";
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, 6, 0, Math.PI * 2);
-          ctx.fill();
+      try {
+        const res = await fetch(`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/dispatches`, {
+          method: "POST",
+          headers: {
+            "Accept": "application/vnd.github+json",
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            event_type: eventType,
+            client_payload: patchObj
+          })
         });
 
-        $("liveScoreHud").textContent = `Alignment: ${latestAlignmentScore}/100`;
-        $("postureFeedbackText").textContent = latestAlignmentScore >= 85
-          ? "Optimal biotensegrity stack — shoulders balanced & sternum lifted."
-          : "Soften upper traps and widen collarbones gently.";
-
-        animFrameId = requestAnimationFrame(loopMirrorCanvas);
+        if (res.status === 204 || res.ok) {
+          $("dispatchStatusText").textContent = "✅ Dispatched! GitHub Actions is creating the PR & merging to main.";
+          showToast("🚀 Dispatched PR & Merge to main!");
+        } else {
+          const errTxt = await res.text();
+          $("dispatchStatusText").textContent = `❌ GitHub API (${res.status}): ${errTxt.slice(0, 110)}`;
+        }
+      } catch (err) {
+        $("dispatchStatusText").textContent = `❌ Network error: ${err.message}`;
       }
+    }
 
-      /* ICS CALENDAR REMINDER & BACKUP */
-      function downloadIcsReminder() {
-        const ics = [
-          "BEGIN:VCALENDAR",
-          "VERSION:2.0",
-          "PRODID:-//TENSI//Fascia & Posture PWA//EN",
-          "BEGIN:VEVENT",
-          "SUMMARY:TENSI — Daily Fascia & Structure Roll",
-          "DESCRIPTION:Lift Your Structure. Spring Your Fascia. 12-min daily biotensegrity & posture session.",
-          "DTSTART:20261128T080000",
-          "DURATION:PT15M",
-          "RRULE:FREQ=DAILY",
-          "END:VEVENT",
-          "END:VCALENDAR"
-        ].join("\r\n");
-
-        const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "tensi-daily-reminder.ics";
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast("📅 Downloaded tensi-daily-reminder.ics");
-      }
-
-      /* JSON PATCH STUDIO & GITHUB DISPATCH */
-      function loadGhConfig() {
-        try {
-          const raw = localStorage.getItem(GH_CONFIG_KEY);
-          if (!raw) return;
-          const cfg = JSON.parse(raw);
-          if (cfg.owner) $("ghOwnerInput").value = cfg.owner;
-          if (cfg.repo) $("ghRepoInput").value = cfg.repo;
-          if (cfg.event) $("ghEventInput").value = cfg.event;
-          if (cfg.token) $("ghTokenInput").value = cfg.token;
-        } catch (e) {}
-      }
-
-      function saveGhConfig() {
-        try {
-          localStorage.setItem(GH_CONFIG_KEY, JSON.stringify({
-            owner: $("ghOwnerInput").value.trim(),
-            repo: $("ghRepoInput").value.trim(),
-            event: $("ghEventInput").value.trim() || "tensi_inject_code",
-            token: $("ghTokenInput").value.trim()
-          }));
-        } catch (e) {}
-      }
-
-      function getSafeCurrentDocumentSource() {
-        const rawHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-        return rawHtml.replace(/<\/script>/gi, "<\\/script>");
-      }
-
-      function buildJsonPatchObject() {
-        const filePath = $("patchPathInput").value.trim() || "index.html";
-        const content = $("rawCodeInput").value;
-        const payload = {
-          target_branch: "main",
-          feature_branch_prefix: "tensi-patch",
-          commit_message: `feat(tensi): update ${filePath} via TENSI JSON Patch Studio`,
-          pr_title: `Auto-PR: TENSI Update (${filePath})`,
-          pr_body: "Automated code injection and merge into main via TENSI JSON Patch Studio.",
-          files: [
+    /* DYNAMIC PWA MANIFEST */
+    function attachPwaManifest() {
+      try {
+        const manifest = {
+          name: "TENSI — Training Elastic Networks, Structure & Integrity",
+          short_name: "TENSI",
+          description: "Lift Your Structure. Spring Your Fascia.",
+          start_url: "./",
+          display: "standalone",
+          background_color: "#0b0f17",
+          theme_color: "#0b0f17",
+          icons: [
             {
-              path: filePath,
-              mode: "replace",
-              content: content
+              src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='42' fill='%230b0f17'/%3E%3Ctext x='96' y='118' font-family='sans-serif' font-size='64' font-weight='900' fill='%2338bdf8' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E",
+              sizes: "192x192",
+              type: "image/svg+xml"
             }
           ]
         };
-        $("jsonPreviewOutput").value = JSON.stringify(payload, null, 2);
-        return payload;
-      }
+        const blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
+        const link = document.createElement("link");
+        link.rel = "manifest";
+        link.href = URL.createObjectURL(blob);
+        document.head.appendChild(link);
+      } catch (e) {}
+    }
 
-      async function dispatchToGithub() {
-        saveGhConfig();
-        const owner = $("ghOwnerInput").value.trim();
-        const repo = $("ghRepoInput").value.trim();
-        const eventType = $("ghEventInput").value.trim() || "tensi_inject_code";
-        const token = $("ghTokenInput").value.trim();
-        const rawCode = $("rawCodeInput").value;
-
-        if (!owner || !repo || !token) {
-          $("dispatchStatusText").textContent = "Please fill GitHub Owner, Repo, and Personal Access Token.";
-          return;
-        }
-        if (!rawCode.trim()) {
-          $("dispatchStatusText").textContent = "Paste code or click 'Load Live TENSI HTML' first.";
-          return;
-        }
-
-        const patchObj = buildJsonPatchObject();
-        $("dispatchStatusText").textContent = "Dispatching repository_dispatch event to GitHub...";
-
-        try {
-          const res = await fetch(`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/dispatches`, {
-            method: "POST",
-            headers: {
-              "Accept": "application/vnd.github+json",
-              "Authorization": `Bearer ${token}`,
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              event_type: eventType,
-              client_payload: patchObj
-            })
-          });
-
-          if (res.status === 204 || res.ok) {
-            $("dispatchStatusText").textContent = "✅ Dispatched! GitHub Actions is creating the PR & merging to main.";
-            showToast("🚀 Dispatched PR & Merge to main!");
-          } else {
-            const errTxt = await res.text();
-            $("dispatchStatusText").textContent = `❌ GitHub API (${res.status}): ${errTxt.slice(0, 110)}`;
-          }
-        } catch (err) {
-          $("dispatchStatusText").textContent = `❌ Network error: ${err.message}`;
-        }
-      }
-
-      /* DYNAMIC PWA MANIFEST */
-      function attachPwaManifest() {
-        try {
-          const manifest = {
-            name: "TENSI — Training Elastic Networks, Structure & Integrity",
-            short_name: "TENSI",
-            description: "Lift Your Structure. Spring Your Fascia.",
-            start_url: "./",
-            display: "standalone",
-            background_color: "#0b0f17",
-            theme_color: "#0b0f17",
-            icons: [
-              {
-                src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='42' fill='%230b0f17'/%3E%3Ctext x='96' y='118' font-family='sans-serif' font-size='64' font-weight='900' fill='%2338bdf8' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E",
-                sizes: "192x192",
-                type: "image/svg+xml"
-              }
-            ]
-          };
-          const blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
-          const link = document.createElement("link");
-          link.rel = "manifest";
-          link.href = URL.createObjectURL(blob);
-          document.head.appendChild(link);
-        } catch (e) {}
-      }
-
-      /* EVENT WIRING */
-      function bindEvents() {
-        document.querySelectorAll("#goalRow .pill").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            state.goal = btn.dataset.goal;
-            persist();
-            renderControls();
-          });
-        });
-
-        document.querySelectorAll("#equipRow .pill[data-equip]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            state.equip = btn.dataset.equip;
-            generateRoll(true);
-            renderAll();
-          });
-        });
-
-        document.querySelectorAll("#equipRow .pill[data-kb]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            state.kbWeight = btn.dataset.kb;
-            persist();
-            renderAll();
-          });
-        });
-
-        document.querySelectorAll("#metaRow .pill[data-recoil]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            state.recoilSec = Number(btn.dataset.recoil);
-            persist();
-            renderControls();
-            showToast(`Elastic Recoil phase set to ${state.recoilSec}s`);
-          });
-        });
-
-        $("safeToggleBtn").addEventListener("click", () => {
-          state.safeOnly = !state.safeOnly;
-          generateRoll(true);
-          renderAll();
-        });
-
-        $("icsBtn").addEventListener("click", downloadIcsReminder);
-
-        $("rerollBtn").addEventListener("click", () => {
-          vibrateSafe(25);
-          playTone(580, 0.06);
-          generateRoll(true);
-          renderRollList();
-          showToast("🎲 Re-rolled unlocked slots");
-        });
-
-        $("deskResetBtn").addEventListener("click", generateDeskReset);
-        $("startWorkoutBtn").addEventListener("click", startWorkoutPlayer);
-
-        // Tabs
-        document.querySelectorAll(".nav-item").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const tab = btn.dataset.tab;
-            document.querySelectorAll(".nav-item").forEach((b) => b.classList.toggle("active", b === btn));
-            document.querySelectorAll(".view").forEach((v) => v.classList.toggle("active", v.id === `view-${tab}`));
-            if (tab !== "mirror") stopMirror();
-          });
-        });
-
-        // Mirror controls
-        $("startCamBtn").addEventListener("click", startLiveCameraMirror);
-        $("demoPoseBtn").addEventListener("click", startDemoPoseMirror);
-        $("saveScanBtn").addEventListener("click", () => {
-          const label = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" });
-          state.postureHistory.push({ date: label, score: latestAlignmentScore });
-          if (state.postureHistory.length > 14) state.postureHistory.shift();
-          persist();
-          renderAll();
-          showToast(`✓ Logged Posture Score: ${latestAlignmentScore}/100`);
-        });
-
-        // Water & Backup
-        const logWater = () => {
-          state.hydrationMl += 250;
-          state.hydrationDate = todayStr();
+    /* EVENT WIRING */
+    function bindEvents() {
+      document.querySelectorAll("#goalRow .pill").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.goal = btn.dataset.goal;
           persist();
           renderControls();
-          showToast("💧 +250ml Fascia Hydration logged");
-        };
-        $("addWaterQuickBtn").addEventListener("click", logWater);
-        $("logSummaryWaterBtn").addEventListener("click", logWater);
+        });
+      });
 
-        $("exportBackupBtn").addEventListener("click", () => {
-          const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = `tensi-backup-${todayStr()}.json`;
-          a.click();
-          URL.revokeObjectURL(url);
-        });
-
-        $("importBackupBtn").addEventListener("click", () => $("importFileInput").click());
-        $("importFileInput").addEventListener("change", (e) => {
-          const file = e.target.files?.[0];
-          if (!file) return;
-          const reader = new FileReader();
-          reader.onload = () => {
-            try {
-              const imported = JSON.parse(reader.result);
-              state = { ...defaultState, ...imported };
-              persist();
-              renderAll();
-              showToast("✓ TENSI progress restored");
-            } catch (err) {
-              showToast("Invalid backup JSON file");
-            }
-          };
-          reader.readAsText(file);
-        });
-
-        // Onboarding
-        $("openOnboardingBtn").addEventListener("click", () => $("onboardingModal").classList.add("open"));
-        document.querySelectorAll("#onbGoalRow .pill").forEach((b) => {
-          b.addEventListener("click", () => {
-            state.goal = b.dataset.goal;
-            document.querySelectorAll("#onbGoalRow .pill").forEach((x) => x.classList.toggle("active", x === b));
-          });
-        });
-        document.querySelectorAll("#onbEquipRow .pill").forEach((b) => {
-          b.addEventListener("click", () => {
-            state.equip = b.dataset.equip;
-            document.querySelectorAll("#onbEquipRow .pill").forEach((x) => x.classList.toggle("active", x === b));
-          });
-        });
-        document.querySelectorAll("#onbDurRow .pill").forEach((b) => {
-          b.addEventListener("click", () => {
-            state.duration = Number(b.dataset.dur);
-            document.querySelectorAll("#onbDurRow .pill").forEach((x) => x.classList.toggle("active", x === b));
-          });
-        });
-        $("finishOnboardingBtn").addEventListener("click", () => {
-          state.onboarded = true;
+      document.querySelectorAll("#equipRow .pill[data-equip]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.equip = btn.dataset.equip;
           generateRoll(true);
+          renderAll();
+        });
+      });
+
+      document.querySelectorAll("#equipRow .pill[data-kb]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.kbWeight = btn.dataset.kb;
           persist();
           renderAll();
-          $("onboardingModal").classList.remove("open");
         });
+      });
 
-        // Player controls
-        $("voiceToggleBtn").addEventListener("click", () => {
-          voiceEnabled = !voiceEnabled;
-          $("voiceToggleBtn").textContent = `🔊 Voice: ${voiceEnabled ? "ON" : "OFF"}`;
+      document.querySelectorAll("#metaRow .pill[data-recoil]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.recoilSec = Number(btn.dataset.recoil);
+          persist();
+          renderControls();
+          showToast(`Elastic Recoil phase set to ${state.recoilSec}s`);
         });
-        $("closePlayerBtn").addEventListener("click", stopPlayer);
-        $("pausePlayerBtn").addEventListener("click", () => {
-          playerState.paused = !playerState.paused;
-          $("pausePlayerBtn").textContent = playerState.paused ? "▶ Resume" : "⏸ Pause";
-        });
-        $("nextPlayerBtn").addEventListener("click", advancePlayerStep);
-        $("closeSummaryBtn").addEventListener("click", () => $("summaryModal").classList.remove("open"));
+      });
 
-        // JSON Patch Studio
-        $("openPatchStudioBtn").addEventListener("click", () => {
-          loadGhConfig();
-          $("patchStudioModal").classList.add("open");
+      $("safeToggleBtn").addEventListener("click", () => {
+        state.safeOnly = !state.safeOnly;
+        generateRoll(true);
+        renderAll();
+      });
+
+      $("icsBtn").addEventListener("click", downloadIcsReminder);
+
+      $("rerollBtn").addEventListener("click", () => {
+        vibrateSafe(25);
+        playTone(580, 0.06);
+        generateRoll(true);
+        renderRollList();
+        showToast("🎲 Re-rolled unlocked slots");
+      });
+
+      $("deskResetBtn").addEventListener("click", generateDeskReset);
+      $("startWorkoutBtn").addEventListener("click", startWorkoutPlayer);
+      $("navLiveCamBtn").addEventListener("click", startWorkoutPlayer);
+
+      // Tabs
+      document.querySelectorAll(".nav-item[data-tab]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tab = btn.dataset.tab;
+          document.querySelectorAll(".nav-item[data-tab]").forEach((b) => b.classList.toggle("active", b === btn));
+          document.querySelectorAll(".view").forEach((v) => v.classList.toggle("active", v.id === `view-${tab}`));
         });
-        $("closePatchStudioBtn").addEventListener("click", () => $("patchStudioModal").classList.remove("open"));
-        $("loadSelfSourceBtn").addEventListener("click", () => {
-          $("rawCodeInput").value = getSafeCurrentDocumentSource();
-          buildJsonPatchObject();
-          showToast("Loaded live TENSI HTML into JSON builder");
-        });
-        $("buildJsonPatchBtn").addEventListener("click", () => {
-          buildJsonPatchObject();
-          showToast("Built valid tensi-patch.json payload");
-        });
-        $("copyJsonPatchBtn").addEventListener("click", async () => {
-          if (!$("jsonPreviewOutput").value) buildJsonPatchObject();
+      });
+
+      // Camera toggle inside Live Workout Player
+      $("toggleWorkoutCamBtn").addEventListener("click", () => {
+        state.camPreferred = !state.camPreferred;
+        persist();
+        if (state.camPreferred) {
+          startWorkoutCamera();
+        } else {
+          stopWorkoutCamera();
+          $("toggleWorkoutCamBtn").textContent = "📷 Cam: OFF";
+          $("toggleWorkoutCamBtn").classList.remove("cam-active");
+          $("liveTrackStatus").textContent = "Camera off — Animated Guide Mode";
+          loopWorkoutOverlay();
+        }
+      });
+
+      // Water & Backup
+      const logWater = () => {
+        state.hydrationMl += 250;
+        state.hydrationDate = todayStr();
+        persist();
+        renderControls();
+        showToast("💧 +250ml Fascia Hydration logged");
+      };
+      $("addWaterQuickBtn").addEventListener("click", logWater);
+      $("logSummaryWaterBtn").addEventListener("click", logWater);
+
+      $("exportBackupBtn").addEventListener("click", () => {
+        const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `tensi-backup-${todayStr()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      $("importBackupBtn").addEventListener("click", () => $("importFileInput").click());
+      $("importFileInput").addEventListener("change", (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
           try {
-            await navigator.clipboard.writeText($("jsonPreviewOutput").value);
-            showToast("📋 Copied JSON payload to clipboard");
-          } catch (e) {
-            $("jsonPreviewOutput").select();
-            document.execCommand("copy");
-            showToast("📋 Copied JSON payload");
+            const imported = JSON.parse(reader.result);
+            state = { ...defaultState, ...imported };
+            persist();
+            renderAll();
+            showToast("✓ TENSI progress restored");
+          } catch (err) {
+            showToast("Invalid backup JSON file");
           }
-        });
-        $("downloadJsonPatchBtn").addEventListener("click", () => {
-          if (!$("jsonPreviewOutput").value) buildJsonPatchObject();
-          const blob = new Blob([$("jsonPreviewOutput").value], { type: "application/json" });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "tensi-patch.json";
-          a.click();
-          URL.revokeObjectURL(url);
-        });
-        $("dispatchGithubBtn").addEventListener("click", dispatchToGithub);
-      }
+        };
+        reader.readAsText(file);
+      });
 
-      /* INIT */
-      attachPwaManifest();
-      generateRoll(false);
-      bindEvents();
-      renderAll();
+      // Onboarding
+      $("openOnboardingBtn").addEventListener("click", () => $("onboardingModal").classList.add("open"));
+      document.querySelectorAll("#onbGoalRow .pill").forEach((b) => {
+        b.addEventListener("click", () => {
+          state.goal = b.dataset.goal;
+          document.querySelectorAll("#onbGoalRow .pill").forEach((x) => x.classList.toggle("active", x === b));
+        });
+      });
+      document.querySelectorAll("#onbEquipRow .pill").forEach((b) => {
+        b.addEventListener("click", () => {
+          state.equip = b.dataset.equip;
+          document.querySelectorAll("#onbEquipRow .pill").forEach((x) => x.classList.toggle("active", x === b));
+        });
+      });
+      document.querySelectorAll("#onbDurRow .pill").forEach((b) => {
+        b.addEventListener("click", () => {
+          state.duration = Number(b.dataset.dur);
+          document.querySelectorAll("#onbDurRow .pill").forEach((x) => x.classList.toggle("active", x === b));
+        });
+      });
+      $("finishOnboardingBtn").addEventListener("click", () => {
+        state.onboarded = true;
+        generateRoll(true);
+        persist();
+        renderAll();
+        $("onboardingModal").classList.remove("open");
+      });
 
-      if (!state.onboarded) {
-        $("onboardingModal").classList.add("open");
-      }
-    })();
+      // Player controls
+      $("voiceToggleBtn").addEventListener("click", () => {
+        voiceEnabled = !voiceEnabled;
+        $("voiceToggleBtn").textContent = voiceEnabled ? "🔊 Voice" : "🔇 Muted";
+      });
+      $("closePlayerBtn").addEventListener("click", stopPlayer);
+      $("pausePlayerBtn").addEventListener("click", () => {
+        playerState.paused = !playerState.paused;
+        $("pausePlayerBtn").textContent = playerState.paused ? "▶ Resume" : "⏸ Pause";
+      });
+      $("nextPlayerBtn").addEventListener("click", advancePlayerStep);
+      $("closeSummaryBtn").addEventListener("click", () => $("summaryModal").classList.remove("open"));
+
+      // JSON Patch Studio
+      $("openPatchStudioBtn").addEventListener("click", () => {
+        loadGhConfig();
+        $("patchStudioModal").classList.add("open");
+      });
+      $("closePatchStudioBtn").addEventListener("click", () => $("patchStudioModal").classList.remove("open"));
+      $("loadSelfSourceBtn").addEventListener("click", () => {
+        $("rawCodeInput").value = getSafeCurrentDocumentSource();
+        buildJsonPatchObject();
+        showToast("Loaded live TENSI HTML into JSON builder");
+      });
+      $("buildJsonPatchBtn").addEventListener("click", () => {
+        buildJsonPatchObject();
+        showToast("Built valid tensi-patch.json payload");
+      });
+      $("copyJsonPatchBtn").addEventListener("click", async () => {
+        if (!$("jsonPreviewOutput").value) buildJsonPatchObject();
+        try {
+          await navigator.clipboard.writeText($("jsonPreviewOutput").value);
+          showToast("📋 Copied JSON payload to clipboard");
+        } catch (e) {
+          $("jsonPreviewOutput").select();
+          document.execCommand("copy");
+          showToast("📋 Copied JSON payload");
+        }
+      });
+      $("downloadJsonPatchBtn").addEventListener("click", () => {
+        if (!$("jsonPreviewOutput").value) buildJsonPatchObject();
+        const blob = new Blob([$("jsonPreviewOutput").value], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "tensi-patch.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+      $("dispatchGithubBtn").addEventListener("click", dispatchToGithub);
+    }
+
+    /* INIT */
+    attachPwaManifest();
+    generateRoll(false);
+    bindEvents();
+    renderAll();
+
+    if (!state.onboarded) {
+      $("onboardingModal").classList.add("open");
+    }
   </script>
 </body>
 </html>
