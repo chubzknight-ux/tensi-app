@@ -31,7 +31,7 @@ input[type=time]{width:auto}
 .wm{display:flex;gap:12px;align-items:center}.wm .sv{width:110px}
 .big{font-size:64px;font-weight:800;line-height:1}.ph{font-weight:700;letter-spacing:1px;color:var(--ac)}
 .ph.r{color:var(--wm);animation:pu .4s infinite alternate}@keyframes pu{to{transform:scale(1.1)}}
-.bt{display:flex;gap:6px;flex-wrap:wrap}
+.bt{display:flex;gap:6px;flex-wrap:wrap}.sv,.wm .sv{width:100%}article.c{flex-wrap:wrap}article .sv{order:3}.wm{flex-wrap:wrap}.tri{display:flex;gap:4px;width:100%}.tri>div{flex:1;text-align:center;background:#0f151d;border-radius:10px;padding:4px}.tri b{display:block;font-size:10px;color:var(--mu)}.fig .gr{stroke:#2a3a4c;stroke-width:2}.fig line,.fig polyline{stroke-width:4}
 </style></head><body>
 <header><div><h1>TENSI</h1><small>Lift Your Structure. Spring Your Fascia.</small></div>
 <button onclick="setup()">⚙</button><button onclick="ps()">🛠</button></header>
@@ -110,24 +110,24 @@ bounce:['Soft knees, tall posture, ribs down.','Small springy pulses from feet a
 squat:['Feet shoulder-width, chest proud.','Sit hips back and down, exhale on the way up.','Drive through heels, ribs over hips.'],
 swing:['Hinge hips back, bell between knees.','Snap hips forward, bell floats to chest height.','Let it fall back, hinge, repeat.'],
 floor:['Lie down, ribs soft, neck long.','Exhale: sweep or lift slowly through the range.','Return slowly, no low-back arch.']};
-const CH={open:'level shrug chin',press:'level shrug chin sym',squeeze:'level shrug close',over:'level shrug chin sym',row:'level shrug sym',apart:'level shrug chin sym',nod:'level head',tilt:'shrug',rot:'shrug',side:'shrug',bounce:'level shrug',squat:'level shrug',swing:'level shrug',floor:''};
+const CH={open:'level shrug chin fwd',press:'level shrug chin fwd sym',squeeze:'level shrug close fwd',over:'level shrug chin fwd sym',row:'level shrug fwd sym',apart:'level shrug chin fwd sym',nod:'level head',tilt:'shrug',rot:'shrug',side:'shrug',bounce:'level shrug',squat:'level shrug',swing:'level shrug',floor:''};
 const MT={open:'ws',press:'wy',over:'wy',row:'ea',apart:'ws',rot:'rt',side:'lean',squat:'sq',swing:'wy'};
 const MR={wy:.5,ws:.6,ea:.3,sq:.25,rt:.12,lean:.25};
 const TP={open:4,press:4,squeeze:3,over:4,row:3,apart:3,nod:3,tilt:5,rot:4,side:4,bounce:1.5,squat:4,swing:2.5,floor:4};
-const X={level:['Ratakan bahu kiri-kanan','Level your shoulders'],shrug:['Turunkan bahu, jauhi telinga','Drop shoulders from ears'],chin:['Tegakkan kepala, tarik dagu','Lift head, tuck chin'],head:['Jangan miringkan kepala','Keep head level'],sym:['Samakan tinggi kedua tangan','Match both hands'],close:['Rapatkan telapak tangan di dada','Press hands together at chest'],lost:['Masuk ke dalam frame kamera','Step into the camera frame'],cal:['Kalibrasi: duduk/berdiri tegak','Calibrating: sit/stand tall'],na:['Gerakan lantai – tidak dinilai','Floor move – not judged'],load:['Memuat AI pose…','Loading pose AI…'],off:['Kamera mati','Camera off']};
+const X={level:['Ratakan bahu kiri-kanan','Level your shoulders'],shrug:['Turunkan bahu, jauhi telinga','Drop shoulders from ears'],chin:['Tegakkan kepala, tarik dagu','Lift head, tuck chin'],head:['Jangan miringkan kepala','Keep head level'],sym:['Samakan tinggi kedua tangan','Match both hands'],close:['Rapatkan telapak tangan di dada','Press hands together at chest'],fwd:['Kepala maju – tarik ke belakang, telinga sejajar bahu','Head forward – pull back, ears over shoulders'],lost:['Masuk ke dalam frame kamera','Step into the camera frame'],cal:['Kalibrasi: duduk/berdiri tegak','Calibrating: sit/stand tall'],na:['Gerakan lantai – tidak dinilai','Floor move – not judged'],load:['Memuat AI pose…','Loading pose AI…'],off:['Kamera mati','Camera off']};
 const tx=k=>X[k][S.lang=='id'?0:1];
 // ---------- animated SVG ----------
 const KD={open:{u:[25,95,25],f:[-110,-5,-110],d:4},press:{u:[92,172,92],f:[90,-4,90],d:4},squeeze:{u:[55,55,55],f:[-120,-100,-120],d:2},over:{u:[10,172,10],f:[0,-4,0],d:4},row:{u:[75,45,75],f:[-20,-120,-20],d:3},apart:{u:[88,96,88],f:[-100,-4,-100],d:3.5},nod:{u:[3,3,3],f:[0,0,0],hy:[0,4,0],d:3},tilt:{u:[3,3,3,3,3],f:[0,0,0,0,0],h:[0,-22,0,22,0],d:6},rot:{u:[92,92,92,92,92],f:[0,0,0,0,0],t:[0,-14,0,14,0],d:6},side:{u:[5,172,5],f:[0,-4,0],r:{u:[-5,-5,-5],f:[0,0,0]},t:[0,-16,0],d:4},bounce:{u:[28,48,28,48,28],f:[-90,-110,-90,-110,-90],y:[0,-6,0,-6,0],d:1.2},squat:{u:[60,60,60],f:[-100,-100,-100],y:[0,13,0],g:1,d:4},swing:{u:[10,140,10],f:[0,0,0],y:[0,6,0],d:2.4},floor:{u:[12,172,12],f:[0,0,0],lay:1,d:4}};
-function svg(k,kb,hold){const d=KD[k];
-const A=(t,v)=>`<animateTransform attributeName="transform" type="${t}" values="${v.join(';')}" keyTimes="${v.map((_,i)=>(i/(v.length-1)).toFixed(2)).join(';')}" calcMode="spline" keySplines="${v.slice(1).map(()=>'.45 0 .25 1').join(';')}" dur="${d.d}s" repeatCount="indefinite"/>`;
+function svg(k,kb,hold){return '<div class="tri">'+[['START',0],['END',1],['LIVE',-1]].map(a=>'<div>'+svg1(k,kb,hold,a[1])+'<b>'+a[0]+'</b></div>').join('')+'</div>'}function svg1(k,kb,hold,fr){const d=KD[k];
+const A=(t,v)=>fr>=0?`<animateTransform attributeName="transform" type="${t}" values="${v[fr]}" dur="0.01s" fill="freeze"/>`:`<animateTransform attributeName="transform" type="${t}" values="${v.join(';')}" keyTimes="${v.map((_,i)=>(i/(v.length-1)).toFixed(2)).join(';')}" calcMode="spline" keySplines="${v.slice(1).map(()=>'.45 0 .25 1').join(';')}" dur="${d.d}s" repeatCount="indefinite"/>`;
 const arm=(x,u,f)=>`<g transform="translate(${x},38)"><g>${A('rotate',u)}<line y2="21"/><g transform="translate(0,21)"><g>${A('rotate',f)}<line y2="19"/><circle cy="19" r="2.6" class="hd"/>${kb&&x<50?'<circle cy="26" r="5.5" class="kb"/>':''}</g></g></g></g>`;
 const ng=a=>a.map(v=>-v),r=d.r||{u:ng(d.u),f:ng(d.f)};
 const hd=`<g>${d.hy?A('translate',d.hy.map(y=>'0 '+y)):''}<g>${d.h?A('rotate',d.h.map(a=>a+' 50 22')):''}<circle class="hd" cx="50" cy="22" r="9"/></g></g>`;
-const body=`<g>${d.t?A('rotate',d.t.map(a=>a+' 50 72')):''}<line x1="50" y1="32" x2="50" y2="72"/>${hd}${arm(38,d.u,d.f)}${arm(62,r.u,r.f)}</g>`;
+const body=`<g>${d.t?A('rotate',d.t.map(a=>a+' 50 72')):''}<line x1="50" y1="32" x2="50" y2="72"/><line x1="38" y1="38" x2="62" y2="38"/><line x1="43" y1="72" x2="57" y2="72"/>${hd}${arm(38,d.u,d.f)}${arm(62,r.u,r.f)}</g>`;
 const sp='calcMode="spline" keyTimes="0;.5;1" keySplines=".45 0 .25 1;.45 0 .25 1"';
-const lg=d.g?`<polyline points="50,72 43,90 41,106"><animate attributeName="points" values="50,72 43,90 41,106;50,85 33,97 41,106;50,72 43,90 41,106" ${sp} dur="${d.d}s" repeatCount="indefinite"/></polyline><polyline points="50,72 57,90 59,106"><animate attributeName="points" values="50,72 57,90 59,106;50,85 67,97 59,106;50,72 57,90 59,106" ${sp} dur="${d.d}s" repeatCount="indefinite"/></polyline>`:'<polyline points="50,72 43,90 41,106"/><polyline points="50,72 57,90 59,106"/>';
-const pl=hold?'<circle cx="50" cy="48" fill="none" stroke="#ffb86b" stroke-width="2"><animate attributeName="r" values="8;24;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/></circle>':'';
-return `<svg class="fig" viewBox="0 0 100 110"><g${d.lay?' transform="translate(50 62) rotate(90) scale(.85) translate(-50 -62)"':''}>${lg}<g>${d.y?A('translate',d.y.map(y=>'0 '+y)):''}${body}</g>${pl}</g></svg>`}
+const lg=d.g&&!(fr>=0)?`<polyline points="50,72 43,90 41,106"><animate attributeName="points" values="50,72 43,90 41,106;50,85 33,97 41,106;50,72 43,90 41,106" ${sp} dur="${d.d}s" repeatCount="indefinite"/></polyline><polyline points="50,72 57,90 59,106"><animate attributeName="points" values="50,72 57,90 59,106;50,85 67,97 59,106;50,72 57,90 59,106" ${sp} dur="${d.d}s" repeatCount="indefinite"/></polyline>`:(d.g&&fr==1?'<polyline points="50,85 33,97 41,106"/><polyline points="50,85 67,97 59,106"/>':'<polyline points="50,72 43,90 41,106"/><polyline points="50,72 57,90 59,106"/>');
+const pl=hold&&!(fr>=0)?'<circle cx="50" cy="48" fill="none" stroke="#ffb86b" stroke-width="2"><animate attributeName="r" values="8;24;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/></circle>':'';
+return `<svg class="fig" viewBox="0 0 100 110"><line class="gr" x1="12" y1="108" x2="88" y2="108"/><g${d.lay?' transform="translate(50 62) rotate(90) scale(.85) translate(-50 -62)"':''}>${lg}<g>${d.y?A('translate',d.y.map(y=>'0 '+y)):''}${body}</g>${pl}</g></svg>`}
 // ---------- helpers ----------
 const dk=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const lv=()=>S.xp>=12?3:S.xp>=4?2:1;
@@ -223,27 +223,27 @@ S.hist.push({d:dk(),m:len,f});S.hist=S.hist.slice(-120);save();stop();
 say(S.lang=='id'?'Selesai. Kerja bagus!':'Done. Great work!');
 mo(`<h2>Session complete ✓</h2><p>${len} min · Lv.${lv()}${f!==null?' · Form '+f+'% BENAR':''}</p><button class="p" onclick="mc();render()">Close</button>`)}
 // ---------- camera + MediaPipe Pose (on-device) ----------
-const RC={lo:null,hi:null,u:0,n:0};
+const RC={lo:null,hi:null,u:0,n:0};let SM=null;function sm(l){if(!l)return SM=null;SM=SM?l.map((p,i)=>({x:SM[i].x+(p.x-SM[i].x)*.5,y:SM[i].y+(p.y-SM[i].y)*.5,z:p.z,visibility:p.visibility})):l.map(p=>({x:p.x,y:p.y,z:p.z,visibility:p.visibility}));return SM}
 function rc(v,mr){if(RC.lo===null){RC.lo=RC.hi=v;return}
 RC.lo=v<RC.lo?v:RC.lo+(v-RC.lo)*.01;RC.hi=v>RC.hi?v:RC.hi-(RC.hi-v)*.01;const r=RC.hi-RC.lo;if(r<mr)return;
 if(!RC.u&&v>RC.lo+.7*r)RC.u=1;else if(RC.u&&v<RC.lo+.3*r){RC.u=0;RC.n++;W.auto=RC.n}}
 const ang=(a,b,c)=>{const x=Math.atan2(c.y-b.y,c.x-b.x)-Math.atan2(a.y-b.y,a.x-b.x);const d=Math.abs(x*180/Math.PI);return d>180?360-d:d};
-function cx(lm){const v=(...a)=>a.every(i=>(lm[i].visibility??1)>.5),L=lm[11],R=lm[12],sw=Math.hypot(L.x-R.x,L.y-R.y)||1e-3,sy=(L.y+R.y)/2;
-return{lm,v,L,R,sw,sy,mx:(L.x+R.x)/2,nz:lm[0],ey:(lm[7].y+lm[8].y)/2,wv:v(15,16),wy:(sy-(lm[15].y+lm[16].y)/2)/sw,wsp:Math.hypot(lm[15].x-lm[16].x,lm[15].y-lm[16].y)/sw,hv:v(23,24),hx:(lm[23].x+lm[24].x)/2}}
-const CK={level:c=>Math.abs(c.L.y-c.R.y)/c.sw>.24&&'level',
-shrug:c=>W.B&&c.v(7,8)&&(c.sy-c.ey)/c.sw<W.B.es*.7&&'shrug',
-chin:c=>W.B&&c.v(0)&&(c.sy-c.nz.y)/c.sw<W.B.ns*.78&&'chin',
+function cx(lm,w){const v=(...a)=>a.every(i=>(lm[i].visibility??1)>.5),L=lm[11],R=lm[12],sw=Math.hypot(L.x-R.x,L.y-R.y)||1e-3,sy=(L.y+R.y)/2;
+return{lm,v,L,R,sw,sy,fz:w?(w[7].z+w[8].z)/2-(w[11].z+w[12].z)/2:null,lv:(L.y-R.y)/sw,mx:(L.x+R.x)/2,nz:lm[0],ey:(lm[7].y+lm[8].y)/2,wv:v(15,16),wy:(sy-(lm[15].y+lm[16].y)/2)/sw,wsp:Math.hypot(lm[15].x-lm[16].x,lm[15].y-lm[16].y)/sw,hv:v(23,24),hx:(lm[23].x+lm[24].x)/2}}
+const CK={level:c=>Math.abs((c.L.y-c.R.y)/c.sw-(W.B?W.B.lv:0))>.18&&'level',
+shrug:c=>W.B&&c.v(7,8)&&(c.sy-c.ey)/c.sw<W.B.es*.78&&'shrug',
+chin:c=>W.B&&c.v(0)&&(c.sy-c.nz.y)/c.sw<W.B.ns*.85&&'chin',
 head:c=>c.v(7,8)&&Math.abs(c.lm[7].y-c.lm[8].y)/c.sw>.2&&'head',
 sym:c=>c.wv&&Math.abs(c.lm[15].y-c.lm[16].y)/c.sw>.6&&'sym',
-close:c=>c.wv&&c.wsp>1.1&&'close'};
+close:c=>c.wv&&c.wsp>1.1&&'close',fwd:c=>W.B&&c.fz!=null&&c.v(7,8)&&c.fz<W.B.fz-.06&&'fwd'};
 const MET={wy:c=>c.wv?c.wy:null,ws:c=>c.wv?c.wsp:null,ea:c=>c.v(13,14,15,16)?(ang(c.lm[11],c.lm[13],c.lm[15])+ang(c.lm[12],c.lm[14],c.lm[16]))/360:null,sq:c=>c.sy/c.sw,rt:c=>W.B?c.sw/W.B.sw:null,lean:c=>c.hv?(c.mx-c.hx)/c.sw:(W.B?(c.mx-W.B.mx)/c.sw:null)};
 const CN=[[11,12],[11,13],[13,15],[12,14],[14,16],[11,23],[12,24],[23,24],[0,11],[0,12]];
-function cal(c){if(!c.v(0,7,8))return;const B=W.cb||(W.cb={n:0,sw:0,mx:0,es:0,ns:0});B.n++;B.sw+=c.sw;B.mx+=c.mx;B.es+=(c.sy-c.ey)/c.sw;B.ns+=(c.sy-c.nz.y)/c.sw;
-if(B.n>=15){W.B={sw:B.sw/15,mx:B.mx/15,es:B.es/15,ns:B.ns/15};W.cb=null;W.form='wait';say(S.lang=='id'?'Kalibrasi selesai':'Calibrated');fbu()}}
+function cal(c){if(!c.v(0,7,8))return;const B=W.cb||(W.cb={n:0,sw:0,mx:0,es:0,ns:0,fz:0,lv:0});B.n++;B.sw+=c.sw;B.mx+=c.mx;B.es+=(c.sy-c.ey)/c.sw;B.ns+=(c.sy-c.nz.y)/c.sw;B.fz+=c.fz||0;B.lv+=c.lv;
+if(B.n>=15){W.B={sw:B.sw/15,mx:B.mx/15,es:B.es/15,ns:B.ns/15,fz:B.fz/15,lv:B.lv/15};W.cb=null;W.form='wait';say(S.lang=='id'?'Kalibrasi selesai':'Calibrated');fbu()}}
 async function cs(){if(C.ld||!W)return;C.ld=1;W.form='load';fbu();
 try{if(!C.m){const M=await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs');
 const F=await M.FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm');
-const o=d=>({baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task',delegate:d},runningMode:'VIDEO',numPoses:1});
+const o=d=>({baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/1/pose_landmarker_full.task',delegate:d},runningMode:'VIDEO',numPoses:1,minPoseDetectionConfidence:.6,minPosePresenceConfidence:.6,minTrackingConfidence:.6});
 try{C.m=await M.PoseLandmarker.createFromOptions(F,o('GPU'))}catch(e){C.m=await M.PoseLandmarker.createFromOptions(F,o('CPU'))}}
 const s=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640},height:{ideal:480}},audio:false});
 if(!W){s.getTracks().forEach(t=>t.stop());C.ld=0;return}
@@ -254,9 +254,9 @@ if(v&&v.readyState>=2&&n-(C.t||0)>66){C.t=n;try{pf(C.m.detectForVideo(v,n))}catc
 function pf(r){if(!W||!C.on)return;const v=$('#vd'),cv=$('#cv');if(!v||!cv)return;const n=performance.now();
 if(W.form=='cal'&&n-W.ls>9000){W.form='wait';W.cb=null;fbu()}
 if(cv.width!=v.videoWidth){cv.width=v.videoWidth;cv.height=v.videoHeight}
-const x=cv.getContext('2d');x.clearRect(0,0,cv.width,cv.height);const lm=r.landmarks&&r.landmarks[0];
+const x=cv.getContext('2d');x.clearRect(0,0,cv.width,cv.height);const lm=sm(r.landmarks&&r.landmarks[0]);
 if(!lm||!(lm[11].visibility>.5&&lm[12].visibility>.5)){if(n-W.seen>2500&&W.form!='cal'&&W.form!='lost'){W.form='lost';fbu()}return}
-W.seen=n;const c=cx(lm);
+W.seen=n;const c=cx(lm,r.worldLandmarks&&r.worldLandmarks[0]);
 x.strokeStyle=W.form=='bad'?'#ff5d6c':'#3ddc97';x.lineWidth=4;x.beginPath();
 CN.forEach(([a,b])=>{if(lm[a].visibility>.4&&lm[b].visibility>.4){x.moveTo(lm[a].x*cv.width,lm[a].y*cv.height);x.lineTo(lm[b].x*cv.width,lm[b].y*cv.height)}});x.stroke();
 if(W.form=='cal')return cal(c);
